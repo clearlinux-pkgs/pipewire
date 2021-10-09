@@ -4,7 +4,7 @@
 #
 Name     : pipewire
 Version  : 0.3.38
-Release  : 32
+Release  : 33
 URL      : https://gitlab.freedesktop.org/pipewire/pipewire/-/archive/0.3.38/pipewire-0.3.38.tar.gz
 Source0  : https://gitlab.freedesktop.org/pipewire/pipewire/-/archive/0.3.38/pipewire-0.3.38.tar.gz
 Summary  : No detailed summary available
@@ -13,7 +13,9 @@ License  : MIT
 Requires: pipewire-bin = %{version}-%{release}
 Requires: pipewire-config = %{version}-%{release}
 Requires: pipewire-data = %{version}-%{release}
+Requires: pipewire-filemap = %{version}-%{release}
 Requires: pipewire-lib = %{version}-%{release}
+Requires: pipewire-libexec = %{version}-%{release}
 Requires: pipewire-license = %{version}-%{release}
 Requires: pipewire-locales = %{version}-%{release}
 Requires: pipewire-man = %{version}-%{release}
@@ -52,9 +54,11 @@ deal with multimedia pipelines. This includes:
 Summary: bin components for the pipewire package.
 Group: Binaries
 Requires: pipewire-data = %{version}-%{release}
+Requires: pipewire-libexec = %{version}-%{release}
 Requires: pipewire-config = %{version}-%{release}
 Requires: pipewire-license = %{version}-%{release}
 Requires: pipewire-services = %{version}-%{release}
+Requires: pipewire-filemap = %{version}-%{release}
 
 %description bin
 bin components for the pipewire package.
@@ -89,14 +93,35 @@ Requires: pipewire = %{version}-%{release}
 dev components for the pipewire package.
 
 
+%package filemap
+Summary: filemap components for the pipewire package.
+Group: Default
+
+%description filemap
+filemap components for the pipewire package.
+
+
 %package lib
 Summary: lib components for the pipewire package.
 Group: Libraries
 Requires: pipewire-data = %{version}-%{release}
+Requires: pipewire-libexec = %{version}-%{release}
 Requires: pipewire-license = %{version}-%{release}
+Requires: pipewire-filemap = %{version}-%{release}
 
 %description lib
 lib components for the pipewire package.
+
+
+%package libexec
+Summary: libexec components for the pipewire package.
+Group: Default
+Requires: pipewire-config = %{version}-%{release}
+Requires: pipewire-license = %{version}-%{release}
+Requires: pipewire-filemap = %{version}-%{release}
+
+%description libexec
+libexec components for the pipewire package.
 
 
 %package license
@@ -152,7 +177,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1633016500
+export SOURCE_DATE_EPOCH=1633814187
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
 export FCFLAGS="$FFLAGS -fno-lto "
@@ -165,7 +190,7 @@ CFLAGS="$CFLAGS" CXXFLAGS="$CXXFLAGS" LDFLAGS="$LDFLAGS" meson --libdir=lib64 --
 -Dvulkan=disabled \
 -Dlibcamera=disabled  builddir
 ninja -v -C builddir
-CFLAGS="$CFLAGS -m64 -march=x86-64-v3" CXXFLAGS="$CXXFLAGS -m64 -march=x86-64-v3 " LDFLAGS="$LDFLAGS -m64 -march=x86-64-v3" meson --libdir=lib64/x86-64-v3 --prefix=/usr --buildtype=plain -Dbluez5-backend-ofono=disabled \
+CFLAGS="$CFLAGS -m64 -march=x86-64-v3 -O3" CXXFLAGS="$CXXFLAGS -m64 -march=x86-64-v3 " LDFLAGS="$LDFLAGS -m64 -march=x86-64-v3" meson --libdir=lib64 --prefix=/usr --buildtype=plain -Dbluez5-backend-ofono=disabled \
 -Dinstalled_tests=enabled \
 -Dpipewire-jack=disabled \
 -Dudevrulesdir="/usr/lib/udev/rules.d" \
@@ -178,20 +203,19 @@ export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-meson test -C builddir
+meson test -C builddir --print-errorlogs
 
 %install
 mkdir -p %{buildroot}/usr/share/package-licenses/pipewire
 cp %{_builddir}/pipewire-0.3.38/COPYING %{buildroot}/usr/share/package-licenses/pipewire/13641f6e59f451fcd8b6f92b449b91e4265854a5
 cp %{_builddir}/pipewire-0.3.38/LICENSE %{buildroot}/usr/share/package-licenses/pipewire/b20949a01ecd5fc139d843db8a3e3b66b6ab8623
-DESTDIR=%{buildroot} ninja -C builddiravx2 install
+DESTDIR=%{buildroot}-v3 ninja -C builddiravx2 install
+/usr/bin/elf-move.py avx2 %{buildroot}-v3 %{buildroot}/usr/share/clear/optimized-elf/ %{buildroot}/usr/share/clear/filemap/filemap-%{name}
 DESTDIR=%{buildroot} ninja -C builddir install
 %find_lang pipewire
 
 %files
 %defattr(-,root,root,-)
-/usr/lib64/x86-64-v3/pkgconfig/libpipewire-0.3.pc
-/usr/lib64/x86-64-v3/pkgconfig/libspa-0.2.pc
 
 %files bin
 %defattr(-,root,root,-)
@@ -220,6 +244,7 @@ DESTDIR=%{buildroot} ninja -C builddir install
 /usr/bin/spa-json-dump
 /usr/bin/spa-monitor
 /usr/bin/spa-resample
+/usr/share/clear/optimized-elf/bin*
 
 %files config
 %defattr(-,root,root,-)
@@ -461,6 +486,10 @@ DESTDIR=%{buildroot} ninja -C builddir install
 /usr/lib64/pkgconfig/libpipewire-0.3.pc
 /usr/lib64/pkgconfig/libspa-0.2.pc
 
+%files filemap
+%defattr(-,root,root,-)
+/usr/share/clear/filemap/filemap-pipewire
+
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/alsa-lib/libasound_module_ctl_pipewire.so
@@ -507,51 +536,11 @@ DESTDIR=%{buildroot} ninja -C builddir install
 /usr/lib64/spa-0.2/videoconvert/libspa-videoconvert.so
 /usr/lib64/spa-0.2/videotestsrc/libspa-videotestsrc.so
 /usr/lib64/spa-0.2/volume/libspa-volume.so
-/usr/lib64/x86-64-v3/alsa-lib/libasound_module_ctl_pipewire.so
-/usr/lib64/x86-64-v3/alsa-lib/libasound_module_pcm_pipewire.so
-/usr/lib64/x86-64-v3/gstreamer-1.0/libgstpipewire.so
-/usr/lib64/x86-64-v3/libpipewire-0.3.so
-/usr/lib64/x86-64-v3/libpipewire-0.3.so.0
-/usr/lib64/x86-64-v3/libpipewire-0.3.so.0.338.0
-/usr/lib64/x86-64-v3/pipewire-0.3/libpipewire-module-access.so
-/usr/lib64/x86-64-v3/pipewire-0.3/libpipewire-module-adapter.so
-/usr/lib64/x86-64-v3/pipewire-0.3/libpipewire-module-client-device.so
-/usr/lib64/x86-64-v3/pipewire-0.3/libpipewire-module-client-node.so
-/usr/lib64/x86-64-v3/pipewire-0.3/libpipewire-module-echo-cancel.so
-/usr/lib64/x86-64-v3/pipewire-0.3/libpipewire-module-filter-chain.so
-/usr/lib64/x86-64-v3/pipewire-0.3/libpipewire-module-link-factory.so
-/usr/lib64/x86-64-v3/pipewire-0.3/libpipewire-module-loopback.so
-/usr/lib64/x86-64-v3/pipewire-0.3/libpipewire-module-metadata.so
-/usr/lib64/x86-64-v3/pipewire-0.3/libpipewire-module-portal.so
-/usr/lib64/x86-64-v3/pipewire-0.3/libpipewire-module-profiler.so
-/usr/lib64/x86-64-v3/pipewire-0.3/libpipewire-module-protocol-native.so
-/usr/lib64/x86-64-v3/pipewire-0.3/libpipewire-module-protocol-pulse.so
-/usr/lib64/x86-64-v3/pipewire-0.3/libpipewire-module-protocol-simple.so
-/usr/lib64/x86-64-v3/pipewire-0.3/libpipewire-module-pulse-tunnel.so
-/usr/lib64/x86-64-v3/pipewire-0.3/libpipewire-module-rt.so
-/usr/lib64/x86-64-v3/pipewire-0.3/libpipewire-module-rtkit.so
-/usr/lib64/x86-64-v3/pipewire-0.3/libpipewire-module-session-manager.so
-/usr/lib64/x86-64-v3/pipewire-0.3/libpipewire-module-spa-device-factory.so
-/usr/lib64/x86-64-v3/pipewire-0.3/libpipewire-module-spa-device.so
-/usr/lib64/x86-64-v3/pipewire-0.3/libpipewire-module-spa-node-factory.so
-/usr/lib64/x86-64-v3/pipewire-0.3/libpipewire-module-spa-node.so
-/usr/lib64/x86-64-v3/pipewire-0.3/libpipewire-module-zeroconf-discover.so
-/usr/lib64/x86-64-v3/spa-0.2/alsa/libspa-alsa.so
-/usr/lib64/x86-64-v3/spa-0.2/audioconvert/libspa-audioconvert.so
-/usr/lib64/x86-64-v3/spa-0.2/audiomixer/libspa-audiomixer.so
-/usr/lib64/x86-64-v3/spa-0.2/audiotestsrc/libspa-audiotestsrc.so
-/usr/lib64/x86-64-v3/spa-0.2/bluez5/libspa-bluez5.so
-/usr/lib64/x86-64-v3/spa-0.2/bluez5/libspa-codec-bluez5-faststream.so
-/usr/lib64/x86-64-v3/spa-0.2/bluez5/libspa-codec-bluez5-sbc.so
-/usr/lib64/x86-64-v3/spa-0.2/control/libspa-control.so
-/usr/lib64/x86-64-v3/spa-0.2/jack/libspa-jack.so
-/usr/lib64/x86-64-v3/spa-0.2/support/libspa-dbus.so
-/usr/lib64/x86-64-v3/spa-0.2/support/libspa-journal.so
-/usr/lib64/x86-64-v3/spa-0.2/support/libspa-support.so
-/usr/lib64/x86-64-v3/spa-0.2/v4l2/libspa-v4l2.so
-/usr/lib64/x86-64-v3/spa-0.2/videoconvert/libspa-videoconvert.so
-/usr/lib64/x86-64-v3/spa-0.2/videotestsrc/libspa-videotestsrc.so
-/usr/lib64/x86-64-v3/spa-0.2/volume/libspa-volume.so
+/usr/share/clear/optimized-elf/lib*
+
+%files libexec
+%defattr(-,root,root,-)
+/usr/share/clear/optimized-elf/exec*
 
 %files license
 %defattr(0644,root,root,0755)
