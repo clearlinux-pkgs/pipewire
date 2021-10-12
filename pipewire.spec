@@ -4,7 +4,7 @@
 #
 Name     : pipewire
 Version  : 0.3.38
-Release  : 35
+Release  : 36
 URL      : https://gitlab.freedesktop.org/pipewire/pipewire/-/archive/0.3.38/pipewire-0.3.38.tar.gz
 Source0  : https://gitlab.freedesktop.org/pipewire/pipewire/-/archive/0.3.38/pipewire-0.3.38.tar.gz
 Summary  : No detailed summary available
@@ -15,7 +15,6 @@ Requires: pipewire-config = %{version}-%{release}
 Requires: pipewire-data = %{version}-%{release}
 Requires: pipewire-filemap = %{version}-%{release}
 Requires: pipewire-lib = %{version}-%{release}
-Requires: pipewire-libexec = %{version}-%{release}
 Requires: pipewire-license = %{version}-%{release}
 Requires: pipewire-locales = %{version}-%{release}
 Requires: pipewire-man = %{version}-%{release}
@@ -54,7 +53,6 @@ deal with multimedia pipelines. This includes:
 Summary: bin components for the pipewire package.
 Group: Binaries
 Requires: pipewire-data = %{version}-%{release}
-Requires: pipewire-libexec = %{version}-%{release}
 Requires: pipewire-config = %{version}-%{release}
 Requires: pipewire-license = %{version}-%{release}
 Requires: pipewire-services = %{version}-%{release}
@@ -105,23 +103,11 @@ filemap components for the pipewire package.
 Summary: lib components for the pipewire package.
 Group: Libraries
 Requires: pipewire-data = %{version}-%{release}
-Requires: pipewire-libexec = %{version}-%{release}
 Requires: pipewire-license = %{version}-%{release}
 Requires: pipewire-filemap = %{version}-%{release}
 
 %description lib
 lib components for the pipewire package.
-
-
-%package libexec
-Summary: libexec components for the pipewire package.
-Group: Default
-Requires: pipewire-config = %{version}-%{release}
-Requires: pipewire-license = %{version}-%{release}
-Requires: pipewire-filemap = %{version}-%{release}
-
-%description libexec
-libexec components for the pipewire package.
 
 
 %package license
@@ -177,7 +163,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1633819830
+export SOURCE_DATE_EPOCH=1634051873
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
 export FCFLAGS="$FFLAGS -fno-lto "
@@ -538,10 +524,6 @@ DESTDIR=%{buildroot} ninja -C builddir install
 /usr/lib64/spa-0.2/volume/libspa-volume.so
 /usr/share/clear/optimized-elf/lib*
 
-%files libexec
-%defattr(-,root,root,-)
-/usr/share/clear/optimized-elf/exec*
-
 %files license
 %defattr(0644,root,root,0755)
 /usr/share/package-licenses/pipewire/13641f6e59f451fcd8b6f92b449b91e4265854a5
@@ -603,6 +585,7 @@ DESTDIR=%{buildroot} ninja -C builddir install
 /usr/libexec/installed-tests/pipewire-0.3/spa-benchmark-dict
 /usr/libexec/installed-tests/pipewire-0.3/spa-benchmark-pod
 /usr/libexec/installed-tests/pipewire-0.3/spa-stress-ringbuffer
+/usr/share/clear/optimized-elf/test*
 /usr/share/installed-tests/pipewire-0.3/audioconvert/benchmark-fmt-ops.test
 /usr/share/installed-tests/pipewire-0.3/audioconvert/benchmark-resample.test
 /usr/share/installed-tests/pipewire-0.3/audioconvert/test-audioadapter.test
