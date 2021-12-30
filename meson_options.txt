@@ -50,12 +50,19 @@ option('pipewire-jack',
        description: 'Enable pipewire-jack integration',
        type: 'feature',
        value: 'enabled')
+option('pipewire-v4l2',
+       description: 'Enable pipewire-v4l2 integration',
+       type: 'feature',
+       value: 'enabled')
 option('jack-devel',
        description: 'Install jack development files',
        type: 'boolean',
        value: 'false')
 option('libjack-path',
        description: 'Where to install the libjack.so library',
+       type: 'string')
+option('libv4l2-path',
+       description: 'Where to install the libpw-v4l2.so library',
        type: 'string')
 option('spa-plugins',
        description: 'Enable spa plugins integration',
@@ -137,6 +144,10 @@ option('v4l2',
        description: 'Enable v4l2 spa plugin integration',
        type: 'feature',
        value: 'auto')
+option('dbus',
+       description: 'Enable code that depends on dbus',
+       type: 'feature',
+       value: 'enabled')
 option('libcamera',
        description: 'Enable libcamera spa plugin integration',
        type: 'feature',
@@ -200,7 +211,14 @@ option('libusb',
        type: 'feature',
        value: 'auto')
 option('session-managers',
-       description : 'Session managers to build (can be [] for none)',
+       description : 'Session managers to build (can be [] for none or an absolute path)',
        type : 'array',
-       choices : ['media-session', 'wireplumber'],
        value : ['media-session'])
+option('raop',
+       description: 'Enable module for Remote Audio Output Protocol',
+       type: 'feature',
+       value: 'auto')
+option('lv2',
+       description: 'Enable loading of LV2 plugins',
+       type: 'feature',
+       value: 'auto')

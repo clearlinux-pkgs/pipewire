@@ -1,10 +1,12 @@
-0.3.38
+0.3.42
 docutils
 libcap-dev
 libusb-dev
+openssl-dev
 pkgconfig(avahi-client)
 pkgconfig(libcap)
 pkgconfig(libusb-1.0)
+pkgconfig(lilv-0)
+pkgconfig(openssl)
 pkgconfig(readline)
 readline-dev
-valgrind

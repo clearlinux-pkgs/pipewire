@@ -114,6 +114,7 @@ libpipewire-0.3.so.0:pw_get_library_version
 libpipewire-0.3.so.0:pw_get_prgname
 libpipewire-0.3.so.0:pw_get_support
 libpipewire-0.3.so.0:pw_get_user_name
+libpipewire-0.3.so.0:pw_getrandom
 libpipewire-0.3.so.0:pw_gettext
 libpipewire-0.3.so.0:pw_global_add_listener
 libpipewire-0.3.so.0:pw_global_add_resource
@@ -125,6 +126,7 @@ libpipewire-0.3.so.0:pw_global_get_id
 libpipewire-0.3.so.0:pw_global_get_object
 libpipewire-0.3.so.0:pw_global_get_permissions
 libpipewire-0.3.so.0:pw_global_get_properties
+libpipewire-0.3.so.0:pw_global_get_serial
 libpipewire-0.3.so.0:pw_global_get_type
 libpipewire-0.3.so.0:pw_global_get_version
 libpipewire-0.3.so.0:pw_global_is_type
@@ -187,6 +189,7 @@ libpipewire-0.3.so.0:pw_impl_metadata_add_listener
 libpipewire-0.3.so.0:pw_impl_metadata_destroy
 libpipewire-0.3.so.0:pw_impl_metadata_get_global
 libpipewire-0.3.so.0:pw_impl_metadata_get_implementation
+libpipewire-0.3.so.0:pw_impl_metadata_get_properties
 libpipewire-0.3.so.0:pw_impl_metadata_get_user_data
 libpipewire-0.3.so.0:pw_impl_metadata_register
 libpipewire-0.3.so.0:pw_impl_metadata_set_implementation
@@ -214,6 +217,7 @@ libpipewire-0.3.so.0:pw_impl_node_get_user_data
 libpipewire-0.3.so.0:pw_impl_node_initialized
 libpipewire-0.3.so.0:pw_impl_node_is_active
 libpipewire-0.3.so.0:pw_impl_node_register
+libpipewire-0.3.so.0:pw_impl_node_send_command
 libpipewire-0.3.so.0:pw_impl_node_set_active
 libpipewire-0.3.so.0:pw_impl_node_set_driver
 libpipewire-0.3.so.0:pw_impl_node_set_implementation
@@ -289,6 +293,11 @@ libpipewire-0.3.so.0:pw_properties_add
 libpipewire-0.3.so.0:pw_properties_add_keys
 libpipewire-0.3.so.0:pw_properties_clear
 libpipewire-0.3.so.0:pw_properties_copy
+libpipewire-0.3.so.0:pw_properties_fetch_bool
+libpipewire-0.3.so.0:pw_properties_fetch_int32
+libpipewire-0.3.so.0:pw_properties_fetch_int64
+libpipewire-0.3.so.0:pw_properties_fetch_uint32
+libpipewire-0.3.so.0:pw_properties_fetch_uint64
 libpipewire-0.3.so.0:pw_properties_free
 libpipewire-0.3.so.0:pw_properties_get
 libpipewire-0.3.so.0:pw_properties_iterate

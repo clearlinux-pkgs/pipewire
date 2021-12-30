@@ -4,3 +4,4 @@
 -Dudevrulesdir="/usr/lib/udev/rules.d"
 -Dvulkan=disabled
 -Dlibcamera=disabled
+-Dsession-managers=[]
