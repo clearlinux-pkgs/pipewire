@@ -1,9 +1,10 @@
-0.3.43
+0.3.44
 docutils
 libcap-dev
 libusb-dev
 openssl-dev
 pkgconfig(avahi-client)
+pkgconfig(libcanberra)
 pkgconfig(libcap)
 pkgconfig(libusb-1.0)
 pkgconfig(openssl)
