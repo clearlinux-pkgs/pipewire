@@ -4,7 +4,7 @@
 #
 Name     : pipewire
 Version  : 0.3.51
-Release  : 48
+Release  : 50
 URL      : https://gitlab.freedesktop.org/pipewire/pipewire/-/archive/0.3.51/pipewire-0.3.51.tar.gz
 Source0  : https://gitlab.freedesktop.org/pipewire/pipewire/-/archive/0.3.51/pipewire-0.3.51.tar.gz
 Source1  : https://gitlab.freedesktop.org/pipewire/media-session/-/archive/0.4.1/media-session-0.4.1.tar.gz
@@ -20,6 +20,7 @@ Requires: pipewire-license = %{version}-%{release}
 Requires: pipewire-locales = %{version}-%{release}
 Requires: pipewire-man = %{version}-%{release}
 Requires: pipewire-services = %{version}-%{release}
+Requires: jack
 BuildRequires : SDL2-dev
 BuildRequires : bluez-dev
 BuildRequires : buildreq-meson
@@ -171,7 +172,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1652279580
+export SOURCE_DATE_EPOCH=1652313048
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
 export FCFLAGS="$FFLAGS -fno-lto "
@@ -208,6 +209,16 @@ cp %{_builddir}/pipewire-0.3.51/LICENSE %{buildroot}/usr/share/package-licenses/
 DESTDIR=%{buildroot}-v3 ninja -C builddiravx2 install
 DESTDIR=%{buildroot} ninja -C builddir install
 %find_lang pipewire
+## Remove excluded files
+rm -f %{buildroot}*/usr/lib64/pipewire-0.3/jack/libjack.so
+rm -f %{buildroot}*/usr/lib64/pipewire-0.3/jack/libjack.so.0
+rm -f %{buildroot}*/usr/lib64/pipewire-0.3/jack/libjack.so.0.351.0
+rm -f %{buildroot}*/usr/lib64/pipewire-0.3/jack/libjacknet.so
+rm -f %{buildroot}*/usr/lib64/pipewire-0.3/jack/libjacknet.so.0
+rm -f %{buildroot}*/usr/lib64/pipewire-0.3/jack/libjacknet.so.0.351.0
+rm -f %{buildroot}*/usr/lib64/pipewire-0.3/jack/libjackserver.so
+rm -f %{buildroot}*/usr/lib64/pipewire-0.3/jack/libjackserver.so.0
+rm -f %{buildroot}*/usr/lib64/pipewire-0.3/jack/libjackserver.so.0.351.0
 /usr/bin/elf-move.py avx2 %{buildroot}-v3 %{buildroot}/usr/share/clear/optimized-elf/ %{buildroot}/usr/share/clear/filemap/filemap-%{name}
 
 %files
@@ -495,15 +506,6 @@ DESTDIR=%{buildroot} ninja -C builddir install
 /usr/lib64/gstreamer-1.0/libgstpipewire.so
 /usr/lib64/libpipewire-0.3.so.0
 /usr/lib64/libpipewire-0.3.so.0.351.0
-/usr/lib64/pipewire-0.3/jack/libjack.so
-/usr/lib64/pipewire-0.3/jack/libjack.so.0
-/usr/lib64/pipewire-0.3/jack/libjack.so.0.351.0
-/usr/lib64/pipewire-0.3/jack/libjacknet.so
-/usr/lib64/pipewire-0.3/jack/libjacknet.so.0
-/usr/lib64/pipewire-0.3/jack/libjacknet.so.0.351.0
-/usr/lib64/pipewire-0.3/jack/libjackserver.so
-/usr/lib64/pipewire-0.3/jack/libjackserver.so.0
-/usr/lib64/pipewire-0.3/jack/libjackserver.so.0.351.0
 /usr/lib64/pipewire-0.3/libpipewire-module-access.so
 /usr/lib64/pipewire-0.3/libpipewire-module-adapter.so
 /usr/lib64/pipewire-0.3/libpipewire-module-client-device.so
