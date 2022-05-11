@@ -1,6 +1,6 @@
 -Dbluez5-backend-ofono=disabled
 -Dinstalled_tests=enabled
--Dpipewire-jack=disabled
+-Dpipewire-jack=enabled
 -Dudevrulesdir="/usr/lib/udev/rules.d"
 -Dvulkan=disabled
 -Dlibcamera=disabled

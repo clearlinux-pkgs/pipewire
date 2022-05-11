@@ -4,7 +4,7 @@
 #
 Name     : pipewire
 Version  : 0.3.51
-Release  : 47
+Release  : 48
 URL      : https://gitlab.freedesktop.org/pipewire/pipewire/-/archive/0.3.51/pipewire-0.3.51.tar.gz
 Source0  : https://gitlab.freedesktop.org/pipewire/pipewire/-/archive/0.3.51/pipewire-0.3.51.tar.gz
 Source1  : https://gitlab.freedesktop.org/pipewire/media-session/-/archive/0.4.1/media-session-0.4.1.tar.gz
@@ -171,7 +171,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1651590801
+export SOURCE_DATE_EPOCH=1652279580
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
 export FCFLAGS="$FFLAGS -fno-lto "
@@ -179,7 +179,7 @@ export FFLAGS="$FFLAGS -fno-lto "
 export CXXFLAGS="$CXXFLAGS -fno-lto "
 CFLAGS="$CFLAGS" CXXFLAGS="$CXXFLAGS" LDFLAGS="$LDFLAGS" meson --libdir=lib64 --prefix=/usr --buildtype=plain -Dbluez5-backend-ofono=disabled \
 -Dinstalled_tests=enabled \
--Dpipewire-jack=disabled \
+-Dpipewire-jack=enabled \
 -Dudevrulesdir="/usr/lib/udev/rules.d" \
 -Dvulkan=disabled \
 -Dlibcamera=disabled \
@@ -187,7 +187,7 @@ CFLAGS="$CFLAGS" CXXFLAGS="$CXXFLAGS" LDFLAGS="$LDFLAGS" meson --libdir=lib64 --
 ninja -v -C builddir
 CFLAGS="$CFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 -O3" CXXFLAGS="$CXXFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 " LDFLAGS="$LDFLAGS -m64 -march=x86-64-v3" meson --libdir=lib64 --prefix=/usr --buildtype=plain -Dbluez5-backend-ofono=disabled \
 -Dinstalled_tests=enabled \
--Dpipewire-jack=disabled \
+-Dpipewire-jack=enabled \
 -Dudevrulesdir="/usr/lib/udev/rules.d" \
 -Dvulkan=disabled \
 -Dlibcamera=disabled \
@@ -222,6 +222,7 @@ DESTDIR=%{buildroot} ninja -C builddir install
 /usr/bin/pw-dot
 /usr/bin/pw-dsdplay
 /usr/bin/pw-dump
+/usr/bin/pw-jack
 /usr/bin/pw-link
 /usr/bin/pw-loopback
 /usr/bin/pw-metadata
@@ -494,6 +495,15 @@ DESTDIR=%{buildroot} ninja -C builddir install
 /usr/lib64/gstreamer-1.0/libgstpipewire.so
 /usr/lib64/libpipewire-0.3.so.0
 /usr/lib64/libpipewire-0.3.so.0.351.0
+/usr/lib64/pipewire-0.3/jack/libjack.so
+/usr/lib64/pipewire-0.3/jack/libjack.so.0
+/usr/lib64/pipewire-0.3/jack/libjack.so.0.351.0
+/usr/lib64/pipewire-0.3/jack/libjacknet.so
+/usr/lib64/pipewire-0.3/jack/libjacknet.so.0
+/usr/lib64/pipewire-0.3/jack/libjacknet.so.0.351.0
+/usr/lib64/pipewire-0.3/jack/libjackserver.so
+/usr/lib64/pipewire-0.3/jack/libjackserver.so.0
+/usr/lib64/pipewire-0.3/jack/libjackserver.so.0.351.0
 /usr/lib64/pipewire-0.3/libpipewire-module-access.so
 /usr/lib64/pipewire-0.3/libpipewire-module-adapter.so
 /usr/lib64/pipewire-0.3/libpipewire-module-client-device.so
@@ -553,6 +563,7 @@ DESTDIR=%{buildroot} ninja -C builddir install
 /usr/share/man/man1/pw-cat.1
 /usr/share/man/man1/pw-cli.1
 /usr/share/man/man1/pw-dot.1
+/usr/share/man/man1/pw-jack.1
 /usr/share/man/man1/pw-link.1
 /usr/share/man/man1/pw-metadata.1
 /usr/share/man/man1/pw-mididump.1
@@ -585,6 +596,7 @@ DESTDIR=%{buildroot} ninja -C builddir install
 /usr/libexec/installed-tests/pipewire-0.3/examples/export-source
 /usr/libexec/installed-tests/pipewire-0.3/examples/export-spa
 /usr/libexec/installed-tests/pipewire-0.3/examples/export-spa-device
+/usr/libexec/installed-tests/pipewire-0.3/examples/jack/video-dsp-play
 /usr/libexec/installed-tests/pipewire-0.3/examples/local-v4l2
 /usr/libexec/installed-tests/pipewire-0.3/examples/spa/adapter-control
 /usr/libexec/installed-tests/pipewire-0.3/examples/spa/example-control
