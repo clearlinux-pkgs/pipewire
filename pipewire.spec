@@ -4,7 +4,7 @@
 #
 Name     : pipewire
 Version  : 0.3.51
-Release  : 50
+Release  : 51
 URL      : https://gitlab.freedesktop.org/pipewire/pipewire/-/archive/0.3.51/pipewire-0.3.51.tar.gz
 Source0  : https://gitlab.freedesktop.org/pipewire/pipewire/-/archive/0.3.51/pipewire-0.3.51.tar.gz
 Source1  : https://gitlab.freedesktop.org/pipewire/media-session/-/archive/0.4.1/media-session-0.4.1.tar.gz
@@ -20,7 +20,7 @@ Requires: pipewire-license = %{version}-%{release}
 Requires: pipewire-locales = %{version}-%{release}
 Requires: pipewire-man = %{version}-%{release}
 Requires: pipewire-services = %{version}-%{release}
-Requires: jack
+Requires: jack2
 BuildRequires : SDL2-dev
 BuildRequires : bluez-dev
 BuildRequires : buildreq-meson
@@ -172,7 +172,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1652313048
+export SOURCE_DATE_EPOCH=1652319782
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
 export FCFLAGS="$FFLAGS -fno-lto "
