@@ -1,9 +1,8 @@
-0.3.52
+0.3.53
 libcap-dev
 libusb-dev
 openssl-dev
 pkgconfig(avahi-client)
-pkgconfig(lc3plus)
 pkgconfig(libcanberra)
 pkgconfig(libcap)
 pkgconfig(libusb-1.0)
