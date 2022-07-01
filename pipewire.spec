@@ -4,7 +4,7 @@
 #
 Name     : pipewire
 Version  : 0.3.53
-Release  : 54
+Release  : 55
 URL      : https://gitlab.freedesktop.org/pipewire/pipewire/-/archive/0.3.53/pipewire-0.3.53.tar.gz
 Source0  : https://gitlab.freedesktop.org/pipewire/pipewire/-/archive/0.3.53/pipewire-0.3.53.tar.gz
 Source1  : https://gitlab.freedesktop.org/pipewire/media-session/-/archive/0.4.1/media-session-0.4.1.tar.gz
@@ -172,7 +172,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1656598885
+export SOURCE_DATE_EPOCH=1656699360
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
 export FCFLAGS="$FFLAGS -fno-lto "
@@ -551,6 +551,7 @@ rm -fv %{buildroot}/usr/lib64/pipewire-*/jack/libjackserver.so*
 /usr/lib64/spa-0.2/videoconvert/libspa-videoconvert.so
 /usr/lib64/spa-0.2/videotestsrc/libspa-videotestsrc.so
 /usr/lib64/spa-0.2/volume/libspa-volume.so
+/usr/share/clear/optimized-elf/other*
 
 %files license
 %defattr(0644,root,root,0755)
