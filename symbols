@@ -32,6 +32,7 @@ libpipewire-0.3.so.0:pw_context_find_protocol
 libpipewire-0.3.so.0:pw_context_find_spa_lib
 libpipewire-0.3.so.0:pw_context_for_each_global
 libpipewire-0.3.so.0:pw_context_get_conf_section
+libpipewire-0.3.so.0:pw_context_get_data_loop
 libpipewire-0.3.so.0:pw_context_get_default_core
 libpipewire-0.3.so.0:pw_context_get_main_loop
 libpipewire-0.3.so.0:pw_context_get_object
