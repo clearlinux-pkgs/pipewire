@@ -4,7 +4,7 @@
 #
 Name     : pipewire
 Version  : 0.3.56
-Release  : 58
+Release  : 59
 URL      : https://gitlab.freedesktop.org/pipewire/pipewire/-/archive/0.3.56/pipewire-0.3.56.tar.gz
 Source0  : https://gitlab.freedesktop.org/pipewire/pipewire/-/archive/0.3.56/pipewire-0.3.56.tar.gz
 Source1  : https://gitlab.freedesktop.org/pipewire/media-session/-/archive/0.4.1/media-session-0.4.1.tar.gz
