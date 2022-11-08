@@ -4,10 +4,9 @@
 #
 Name     : pipewire
 Version  : 0.3.59
-Release  : 66
+Release  : 68
 URL      : https://gitlab.freedesktop.org/pipewire/pipewire/-/archive/0.3.59/pipewire-0.3.59.tar.gz
 Source0  : https://gitlab.freedesktop.org/pipewire/pipewire/-/archive/0.3.59/pipewire-0.3.59.tar.gz
-Source1  : https://gitlab.freedesktop.org/pipewire/media-session/-/archive/0.4.1/media-session-0.4.1.tar.gz
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : MIT
@@ -160,10 +159,6 @@ tests components for the pipewire package.
 
 %prep
 %setup -q -n pipewire-0.3.59
-cd %{_builddir}
-mkdir -p media-session-0.4.1.tar
-cd media-session-0.4.1.tar
-tar xf %{_sourcedir}/media-session-0.4.1.tar.gz
 cd %{_builddir}/pipewire-0.3.59
 pushd ..
 cp -a pipewire-0.3.59 buildavx2
@@ -174,7 +169,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1664555188
+export SOURCE_DATE_EPOCH=1667939302
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
 export FCFLAGS="$FFLAGS -fno-lto "
@@ -206,8 +201,8 @@ meson test -C builddir --print-errorlogs
 
 %install
 mkdir -p %{buildroot}/usr/share/package-licenses/pipewire
-cp %{_builddir}/pipewire-%{version}/COPYING %{buildroot}/usr/share/package-licenses/pipewire/13641f6e59f451fcd8b6f92b449b91e4265854a5 || :
-cp %{_builddir}/pipewire-%{version}/LICENSE %{buildroot}/usr/share/package-licenses/pipewire/b20949a01ecd5fc139d843db8a3e3b66b6ab8623 || :
+cp %{_builddir}/pipewire-%{version}/COPYING %{buildroot}/usr/share/package-licenses/pipewire/13641f6e59f451fcd8b6f92b449b91e4265854a5
+cp %{_builddir}/pipewire-%{version}/LICENSE %{buildroot}/usr/share/package-licenses/pipewire/b20949a01ecd5fc139d843db8a3e3b66b6ab8623
 DESTDIR=%{buildroot}-v3 ninja -C builddiravx2 install
 DESTDIR=%{buildroot} ninja -C builddir install
 %find_lang pipewire
