@@ -92,6 +92,10 @@ option('bluez5-backend-hfp-native',
        description: 'Enable HFP in native backend in bluez5 spa plugin',
        type: 'feature',
        value: 'enabled')
+option('bluez5-backend-native-mm',
+       description: 'Enable ModemManager in native backend in bluez5 spa plugin',
+       type: 'feature',
+       value: 'disabled')
 option('bluez5-backend-ofono',
        description: 'Enable oFono HFP backend in bluez5 spa plugin (no dependency on oFono)',
        type: 'feature',
@@ -228,7 +232,7 @@ option('libusb',
 option('session-managers',
        description : 'Session managers to build (can be [] for none or an absolute path)',
        type : 'array',
-       value : ['media-session'])
+       value : ['wireplumber'])
 option('raop',
        description: 'Enable module for Remote Audio Output Protocol',
        type: 'feature',
@@ -261,3 +265,7 @@ option('flatpak',
        description: 'Enable Flatpak support',
        type: 'feature',
        value: 'enabled')
+option('readline',
+       description: 'Enable code that depends on libreadline',
+       type: 'feature',
+       value: 'auto')
