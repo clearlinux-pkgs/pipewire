@@ -4,7 +4,7 @@
 #
 Name     : pipewire
 Version  : 0.3.63
-Release  : 72
+Release  : 73
 URL      : https://gitlab.freedesktop.org/pipewire/pipewire/-/archive/0.3.63/pipewire-0.3.63.tar.gz
 Source0  : https://gitlab.freedesktop.org/pipewire/pipewire/-/archive/0.3.63/pipewire-0.3.63.tar.gz
 Summary  : No detailed summary available
