@@ -1,4 +1,4 @@
-0.3.63
+0.3.64
 libcap-dev
 libusb-dev
 openssl-dev
@@ -9,5 +9,7 @@ pkgconfig(libcap)
 pkgconfig(libusb-1.0)
 pkgconfig(opus)
 pkgconfig(readline)
+pkgconfig(roc)
 pypi-docutils
 readline-dev
+valgrind
