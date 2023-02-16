@@ -1,4 +1,4 @@
-0.3.65
+0.3.66
 libcap-dev
 libusb-dev
 openssl-dev
@@ -6,6 +6,7 @@ opus-dev
 pkgconfig(avahi-client)
 pkgconfig(libcanberra)
 pkgconfig(libcap)
+pkgconfig(libmysofa)
 pkgconfig(libusb-1.0)
 pkgconfig(opus)
 pkgconfig(readline)

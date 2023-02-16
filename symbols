@@ -103,6 +103,7 @@ libpipewire-0.3.so.0:pw_filter_get_node_id
 libpipewire-0.3.so.0:pw_filter_get_properties
 libpipewire-0.3.so.0:pw_filter_get_state
 libpipewire-0.3.so.0:pw_filter_get_time
+libpipewire-0.3.so.0:pw_filter_is_driving
 libpipewire-0.3.so.0:pw_filter_new
 libpipewire-0.3.so.0:pw_filter_new_simple
 libpipewire-0.3.so.0:pw_filter_queue_buffer
@@ -110,6 +111,7 @@ libpipewire-0.3.so.0:pw_filter_remove_port
 libpipewire-0.3.so.0:pw_filter_set_active
 libpipewire-0.3.so.0:pw_filter_set_error
 libpipewire-0.3.so.0:pw_filter_state_as_string
+libpipewire-0.3.so.0:pw_filter_trigger_process
 libpipewire-0.3.so.0:pw_filter_update_params
 libpipewire-0.3.so.0:pw_filter_update_properties
 libpipewire-0.3.so.0:pw_free_strv
