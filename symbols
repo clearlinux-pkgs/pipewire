@@ -351,6 +351,7 @@ libpipewire-0.3.so.0:pw_proxy_ref
 libpipewire-0.3.so.0:pw_proxy_set_bound_id
 libpipewire-0.3.so.0:pw_proxy_sync
 libpipewire-0.3.so.0:pw_proxy_unref
+libpipewire-0.3.so.0:pw_random
 libpipewire-0.3.so.0:pw_reallocarray
 libpipewire-0.3.so.0:pw_resource_add_listener
 libpipewire-0.3.so.0:pw_resource_add_object_listener
