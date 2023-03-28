@@ -5,3 +5,4 @@
 -Dvulkan=disabled
 -Dlibcamera=disabled
 -Dsession-managers=[]
+-Davahi=disabled
