@@ -264,6 +264,7 @@ libpipewire-0.3.so.0:pw_log_logtv
 libpipewire-0.3.so.0:pw_log_logv
 libpipewire-0.3.so.0:pw_log_set
 libpipewire-0.3.so.0:pw_log_set_level
+libpipewire-0.3.so.0:pw_loop_check
 libpipewire-0.3.so.0:pw_loop_destroy
 libpipewire-0.3.so.0:pw_loop_new
 libpipewire-0.3.so.0:pw_main_loop_add_listener

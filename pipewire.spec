@@ -4,10 +4,10 @@
 # Using build pattern: meson
 #
 Name     : pipewire
-Version  : 0.3.67
-Release  : 78
-URL      : https://gitlab.freedesktop.org/pipewire/pipewire/-/archive/0.3.67/pipewire-0.3.67.tar.gz
-Source0  : https://gitlab.freedesktop.org/pipewire/pipewire/-/archive/0.3.67/pipewire-0.3.67.tar.gz
+Version  : 0.3.68
+Release  : 79
+URL      : https://gitlab.freedesktop.org/pipewire/pipewire/-/archive/0.3.68/pipewire-0.3.68.tar.gz
+Source0  : https://gitlab.freedesktop.org/pipewire/pipewire/-/archive/0.3.68/pipewire-0.3.68.tar.gz
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : MIT
@@ -30,7 +30,6 @@ BuildRequires : libusb-dev
 BuildRequires : openssl-dev
 BuildRequires : opus-dev
 BuildRequires : pkgconfig(alsa)
-BuildRequires : pkgconfig(avahi-client)
 BuildRequires : pkgconfig(bluez)
 BuildRequires : pkgconfig(dbus-1)
 BuildRequires : pkgconfig(glib-2.0)
@@ -163,10 +162,10 @@ tests components for the pipewire package.
 
 
 %prep
-%setup -q -n pipewire-0.3.67
-cd %{_builddir}/pipewire-0.3.67
+%setup -q -n pipewire-0.3.68
+cd %{_builddir}/pipewire-0.3.68
 pushd ..
-cp -a pipewire-0.3.67 buildavx2
+cp -a pipewire-0.3.68 buildavx2
 popd
 
 %build
@@ -174,7 +173,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1680012669
+export SOURCE_DATE_EPOCH=1680793093
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz "
 export FCFLAGS="$FFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz "
@@ -336,7 +335,9 @@ rm -fv %{buildroot}/usr/lib64/pipewire-*/jack/libjackserver.so*
 /usr/share/alsa/alsa.conf.d/50-pipewire.conf
 /usr/share/alsa/alsa.conf.d/99-pipewire-default.conf
 /usr/share/pipewire/client-rt.conf
+/usr/share/pipewire/client-rt.conf.avail/20-upmix.conf
 /usr/share/pipewire/client.conf
+/usr/share/pipewire/client.conf.avail/20-upmix.conf
 /usr/share/pipewire/filter-chain.conf
 /usr/share/pipewire/filter-chain/demonic.conf
 /usr/share/pipewire/filter-chain/sink-dolby-surround.conf
@@ -353,7 +354,10 @@ rm -fv %{buildroot}/usr/lib64/pipewire-*/jack/libjackserver.so*
 /usr/share/pipewire/pipewire-aes67.conf
 /usr/share/pipewire/pipewire-avb.conf
 /usr/share/pipewire/pipewire-pulse.conf
+/usr/share/pipewire/pipewire-pulse.conf.avail/20-upmix.conf
 /usr/share/pipewire/pipewire.conf
+/usr/share/pipewire/pipewire.conf.avail/10-rates.conf
+/usr/share/pipewire/pipewire.conf.avail/20-upmix.conf
 /usr/share/spa-0.2/bluez5/bluez-hardware.conf
 
 %files dev
@@ -468,6 +472,7 @@ rm -fv %{buildroot}/usr/lib64/pipewire-*/jack/libjackserver.so*
 /usr/include/spa-0.2/spa/param/audio/mp3-types.h
 /usr/include/spa-0.2/spa/param/audio/mp3-utils.h
 /usr/include/spa-0.2/spa/param/audio/mp3.h
+/usr/include/spa-0.2/spa/param/audio/opus.h
 /usr/include/spa-0.2/spa/param/audio/ra-utils.h
 /usr/include/spa-0.2/spa/param/audio/ra.h
 /usr/include/spa-0.2/spa/param/audio/raw-types.h
@@ -568,10 +573,10 @@ rm -fv %{buildroot}/usr/lib64/pipewire-*/jack/libjackserver.so*
 /usr/lib64/alsa-lib/libasound_module_ctl_pipewire.so
 /usr/lib64/alsa-lib/libasound_module_pcm_pipewire.so
 /usr/lib64/glibc-hwcaps/x86-64-v3/libpipewire-0.3.so.0
-/usr/lib64/glibc-hwcaps/x86-64-v3/libpipewire-0.3.so.0.367.0
+/usr/lib64/glibc-hwcaps/x86-64-v3/libpipewire-0.3.so.0.368.0
 /usr/lib64/gstreamer-1.0/libgstpipewire.so
 /usr/lib64/libpipewire-0.3.so.0
-/usr/lib64/libpipewire-0.3.so.0.367.0
+/usr/lib64/libpipewire-0.3.so.0.368.0
 /usr/lib64/pipewire-0.3/libpipewire-module-access.so
 /usr/lib64/pipewire-0.3/libpipewire-module-adapter.so
 /usr/lib64/pipewire-0.3/libpipewire-module-avb.so
@@ -594,6 +599,7 @@ rm -fv %{buildroot}/usr/lib64/pipewire-*/jack/libjackserver.so*
 /usr/lib64/pipewire-0.3/libpipewire-module-raop-sink.so
 /usr/lib64/pipewire-0.3/libpipewire-module-rt.so
 /usr/lib64/pipewire-0.3/libpipewire-module-rtkit.so
+/usr/lib64/pipewire-0.3/libpipewire-module-rtp-sap.so
 /usr/lib64/pipewire-0.3/libpipewire-module-rtp-sink.so
 /usr/lib64/pipewire-0.3/libpipewire-module-rtp-source.so
 /usr/lib64/pipewire-0.3/libpipewire-module-session-manager.so
