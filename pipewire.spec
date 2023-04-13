@@ -4,10 +4,10 @@
 # Using build pattern: meson
 #
 Name     : pipewire
-Version  : 0.3.68
-Release  : 79
-URL      : https://gitlab.freedesktop.org/pipewire/pipewire/-/archive/0.3.68/pipewire-0.3.68.tar.gz
-Source0  : https://gitlab.freedesktop.org/pipewire/pipewire/-/archive/0.3.68/pipewire-0.3.68.tar.gz
+Version  : 0.3.69
+Release  : 80
+URL      : https://gitlab.freedesktop.org/pipewire/pipewire/-/archive/0.3.69/pipewire-0.3.69.tar.gz
+Source0  : https://gitlab.freedesktop.org/pipewire/pipewire/-/archive/0.3.69/pipewire-0.3.69.tar.gz
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : MIT
@@ -147,6 +147,7 @@ man components for the pipewire package.
 %package services
 Summary: services components for the pipewire package.
 Group: Systemd services
+Requires: systemd
 
 %description services
 services components for the pipewire package.
@@ -162,10 +163,10 @@ tests components for the pipewire package.
 
 
 %prep
-%setup -q -n pipewire-0.3.68
-cd %{_builddir}/pipewire-0.3.68
+%setup -q -n pipewire-0.3.69
+cd %{_builddir}/pipewire-0.3.69
 pushd ..
-cp -a pipewire-0.3.68 buildavx2
+cp -a pipewire-0.3.69 buildavx2
 popd
 
 %build
@@ -173,7 +174,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1680793093
+export SOURCE_DATE_EPOCH=1681403877
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz "
 export FCFLAGS="$FFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz "
@@ -287,6 +288,8 @@ rm -fv %{buildroot}/usr/lib64/pipewire-*/jack/libjackserver.so*
 /usr/share/alsa-card-profile/mixer/paths/analog-output-speaker.conf
 /usr/share/alsa-card-profile/mixer/paths/analog-output.conf
 /usr/share/alsa-card-profile/mixer/paths/analog-output.conf.common
+/usr/share/alsa-card-profile/mixer/paths/audigy-analog-output-mirror.conf
+/usr/share/alsa-card-profile/mixer/paths/audigy-analog-output.conf
 /usr/share/alsa-card-profile/mixer/paths/hdmi-output-0.conf
 /usr/share/alsa-card-profile/mixer/paths/hdmi-output-1.conf
 /usr/share/alsa-card-profile/mixer/paths/hdmi-output-10.conf
@@ -573,10 +576,10 @@ rm -fv %{buildroot}/usr/lib64/pipewire-*/jack/libjackserver.so*
 /usr/lib64/alsa-lib/libasound_module_ctl_pipewire.so
 /usr/lib64/alsa-lib/libasound_module_pcm_pipewire.so
 /usr/lib64/glibc-hwcaps/x86-64-v3/libpipewire-0.3.so.0
-/usr/lib64/glibc-hwcaps/x86-64-v3/libpipewire-0.3.so.0.368.0
+/usr/lib64/glibc-hwcaps/x86-64-v3/libpipewire-0.3.so.0.369.0
 /usr/lib64/gstreamer-1.0/libgstpipewire.so
 /usr/lib64/libpipewire-0.3.so.0
-/usr/lib64/libpipewire-0.3.so.0.368.0
+/usr/lib64/libpipewire-0.3.so.0.369.0
 /usr/lib64/pipewire-0.3/libpipewire-module-access.so
 /usr/lib64/pipewire-0.3/libpipewire-module-adapter.so
 /usr/lib64/pipewire-0.3/libpipewire-module-avb.so
