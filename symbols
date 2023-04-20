@@ -10,6 +10,9 @@ libpipewire-0.3.so.0:pw_conf_load_conf_for_context
 libpipewire-0.3.so.0:pw_conf_load_state
 libpipewire-0.3.so.0:pw_conf_match_rules
 libpipewire-0.3.so.0:pw_conf_save_state
+libpipewire-0.3.so.0:pw_conf_section_for_each
+libpipewire-0.3.so.0:pw_conf_section_match_rules
+libpipewire-0.3.so.0:pw_conf_section_update_props
 libpipewire-0.3.so.0:pw_context_add_listener
 libpipewire-0.3.so.0:pw_context_add_spa_lib
 libpipewire-0.3.so.0:pw_context_conf_section_for_each
@@ -401,6 +404,7 @@ libpipewire-0.3.so.0:pw_stream_queue_buffer
 libpipewire-0.3.so.0:pw_stream_set_active
 libpipewire-0.3.so.0:pw_stream_set_control
 libpipewire-0.3.so.0:pw_stream_set_error
+libpipewire-0.3.so.0:pw_stream_set_param
 libpipewire-0.3.so.0:pw_stream_state_as_string
 libpipewire-0.3.so.0:pw_stream_trigger_process
 libpipewire-0.3.so.0:pw_stream_update_params

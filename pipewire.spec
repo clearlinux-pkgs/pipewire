@@ -4,10 +4,10 @@
 # Using build pattern: meson
 #
 Name     : pipewire
-Version  : 0.3.69
-Release  : 80
-URL      : https://gitlab.freedesktop.org/pipewire/pipewire/-/archive/0.3.69/pipewire-0.3.69.tar.gz
-Source0  : https://gitlab.freedesktop.org/pipewire/pipewire/-/archive/0.3.69/pipewire-0.3.69.tar.gz
+Version  : 0.3.70
+Release  : 81
+URL      : https://gitlab.freedesktop.org/pipewire/pipewire/-/archive/0.3.70/pipewire-0.3.70.tar.gz
+Source0  : https://gitlab.freedesktop.org/pipewire/pipewire/-/archive/0.3.70/pipewire-0.3.70.tar.gz
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : MIT
@@ -28,7 +28,6 @@ BuildRequires : libcap-dev
 BuildRequires : libsndfile-dev
 BuildRequires : libusb-dev
 BuildRequires : openssl-dev
-BuildRequires : opus-dev
 BuildRequires : pkgconfig(alsa)
 BuildRequires : pkgconfig(bluez)
 BuildRequires : pkgconfig(dbus-1)
@@ -42,7 +41,6 @@ BuildRequires : pkgconfig(libpulse)
 BuildRequires : pkgconfig(libsystemd)
 BuildRequires : pkgconfig(libusb-1.0)
 BuildRequires : pkgconfig(ncurses)
-BuildRequires : pkgconfig(opus)
 BuildRequires : pkgconfig(readline)
 BuildRequires : pkgconfig(sbc)
 BuildRequires : pkgconfig(sndfile)
@@ -163,10 +161,10 @@ tests components for the pipewire package.
 
 
 %prep
-%setup -q -n pipewire-0.3.69
-cd %{_builddir}/pipewire-0.3.69
+%setup -q -n pipewire-0.3.70
+cd %{_builddir}/pipewire-0.3.70
 pushd ..
-cp -a pipewire-0.3.69 buildavx2
+cp -a pipewire-0.3.70 buildavx2
 popd
 
 %build
@@ -174,7 +172,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1681403877
+export SOURCE_DATE_EPOCH=1682002224
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz "
 export FCFLAGS="$FFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz "
@@ -231,6 +229,7 @@ rm -fv %{buildroot}/usr/lib64/pipewire-*/jack/libjackserver.so*
 /usr/bin/pipewire-pulse
 /usr/bin/pw-cat
 /usr/bin/pw-cli
+/usr/bin/pw-config
 /usr/bin/pw-dot
 /usr/bin/pw-dsdplay
 /usr/bin/pw-dump
@@ -576,10 +575,10 @@ rm -fv %{buildroot}/usr/lib64/pipewire-*/jack/libjackserver.so*
 /usr/lib64/alsa-lib/libasound_module_ctl_pipewire.so
 /usr/lib64/alsa-lib/libasound_module_pcm_pipewire.so
 /usr/lib64/glibc-hwcaps/x86-64-v3/libpipewire-0.3.so.0
-/usr/lib64/glibc-hwcaps/x86-64-v3/libpipewire-0.3.so.0.369.0
+/usr/lib64/glibc-hwcaps/x86-64-v3/libpipewire-0.3.so.0.370.0
 /usr/lib64/gstreamer-1.0/libgstpipewire.so
 /usr/lib64/libpipewire-0.3.so.0
-/usr/lib64/libpipewire-0.3.so.0.369.0
+/usr/lib64/libpipewire-0.3.so.0.370.0
 /usr/lib64/pipewire-0.3/libpipewire-module-access.so
 /usr/lib64/pipewire-0.3/libpipewire-module-adapter.so
 /usr/lib64/pipewire-0.3/libpipewire-module-avb.so
@@ -643,6 +642,7 @@ rm -fv %{buildroot}/usr/lib64/pipewire-*/jack/libjackserver.so*
 /usr/share/man/man1/pipewire.1
 /usr/share/man/man1/pw-cat.1
 /usr/share/man/man1/pw-cli.1
+/usr/share/man/man1/pw-config.1
 /usr/share/man/man1/pw-dot.1
 /usr/share/man/man1/pw-jack.1
 /usr/share/man/man1/pw-link.1
