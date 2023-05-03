@@ -1,3 +1,4 @@
-rm -fv %{buildroot}/usr/lib64/pipewire-*/jack/libjack.so*
-rm -fv %{buildroot}/usr/lib64/pipewire-*/jack/libjacknet.so*
-rm -fv %{buildroot}/usr/lib64/pipewire-*/jack/libjackserver.so*
+rm -fv %{buildroot}*/usr/lib64/pipewire-*/jack/libjack.so*
+rm -fv %{buildroot}*/usr/lib64/pipewire-*/jack/libjacknet.so*
+rm -fv %{buildroot}*/usr/lib64/pipewire-*/jack/libjackserver.so*
+

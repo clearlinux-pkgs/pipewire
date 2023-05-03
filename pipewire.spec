@@ -5,7 +5,7 @@
 #
 Name     : pipewire
 Version  : 0.3.70
-Release  : 82
+Release  : 83
 URL      : https://gitlab.freedesktop.org/pipewire/pipewire/-/archive/0.3.70/pipewire-0.3.70.tar.gz
 Source0  : https://gitlab.freedesktop.org/pipewire/pipewire/-/archive/0.3.70/pipewire-0.3.70.tar.gz
 Summary  : No detailed summary available
@@ -161,7 +161,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1683128605
+export SOURCE_DATE_EPOCH=1683130533
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
 export FCFLAGS="$FFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
@@ -201,9 +201,10 @@ DESTDIR=%{buildroot}-v3 ninja -C builddiravx2 install
 DESTDIR=%{buildroot} ninja -C builddir install
 %find_lang pipewire
 ## install_append content
-rm -fv %{buildroot}/usr/lib64/pipewire-*/jack/libjack.so*
-rm -fv %{buildroot}/usr/lib64/pipewire-*/jack/libjacknet.so*
-rm -fv %{buildroot}/usr/lib64/pipewire-*/jack/libjackserver.so*
+rm -fv %{buildroot}*/usr/lib64/pipewire-*/jack/libjack.so*
+rm -fv %{buildroot}*/usr/lib64/pipewire-*/jack/libjacknet.so*
+rm -fv %{buildroot}*/usr/lib64/pipewire-*/jack/libjackserver.so*
+
 ## install_append end
 /usr/bin/elf-move.py avx2 %{buildroot}-v3 %{buildroot} %{buildroot}/usr/share/clear/filemap/filemap-%{name}
 
@@ -589,15 +590,6 @@ rm -fv %{buildroot}/usr/lib64/pipewire-*/jack/libjackserver.so*
 /V3/usr/lib64/gstreamer-1.0/libgstpipewire.so
 /V3/usr/lib64/libpipewire-0.3.so.0
 /V3/usr/lib64/libpipewire-0.3.so.0.370.0
-/V3/usr/lib64/pipewire-0.3/jack/libjack.so
-/V3/usr/lib64/pipewire-0.3/jack/libjack.so.0
-/V3/usr/lib64/pipewire-0.3/jack/libjack.so.0.370.0
-/V3/usr/lib64/pipewire-0.3/jack/libjacknet.so
-/V3/usr/lib64/pipewire-0.3/jack/libjacknet.so.0
-/V3/usr/lib64/pipewire-0.3/jack/libjacknet.so.0.370.0
-/V3/usr/lib64/pipewire-0.3/jack/libjackserver.so
-/V3/usr/lib64/pipewire-0.3/jack/libjackserver.so.0
-/V3/usr/lib64/pipewire-0.3/jack/libjackserver.so.0.370.0
 /V3/usr/lib64/pipewire-0.3/libpipewire-module-access.so
 /V3/usr/lib64/pipewire-0.3/libpipewire-module-adapter.so
 /V3/usr/lib64/pipewire-0.3/libpipewire-module-avb.so
