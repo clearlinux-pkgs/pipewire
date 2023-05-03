@@ -5,7 +5,7 @@
 #
 Name     : pipewire
 Version  : 0.3.70
-Release  : 81
+Release  : 82
 URL      : https://gitlab.freedesktop.org/pipewire/pipewire/-/archive/0.3.70/pipewire-0.3.70.tar.gz
 Source0  : https://gitlab.freedesktop.org/pipewire/pipewire/-/archive/0.3.70/pipewire-0.3.70.tar.gz
 Summary  : No detailed summary available
@@ -14,7 +14,6 @@ License  : MIT
 Requires: pipewire-bin = %{version}-%{release}
 Requires: pipewire-config = %{version}-%{release}
 Requires: pipewire-data = %{version}-%{release}
-Requires: pipewire-filemap = %{version}-%{release}
 Requires: pipewire-lib = %{version}-%{release}
 Requires: pipewire-license = %{version}-%{release}
 Requires: pipewire-locales = %{version}-%{release}
@@ -64,7 +63,6 @@ Requires: pipewire-data = %{version}-%{release}
 Requires: pipewire-config = %{version}-%{release}
 Requires: pipewire-license = %{version}-%{release}
 Requires: pipewire-services = %{version}-%{release}
-Requires: pipewire-filemap = %{version}-%{release}
 
 %description bin
 bin components for the pipewire package.
@@ -99,20 +97,11 @@ Requires: pipewire = %{version}-%{release}
 dev components for the pipewire package.
 
 
-%package filemap
-Summary: filemap components for the pipewire package.
-Group: Default
-
-%description filemap
-filemap components for the pipewire package.
-
-
 %package lib
 Summary: lib components for the pipewire package.
 Group: Libraries
 Requires: pipewire-data = %{version}-%{release}
 Requires: pipewire-license = %{version}-%{release}
-Requires: pipewire-filemap = %{version}-%{release}
 
 %description lib
 lib components for the pipewire package.
@@ -172,12 +161,12 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1682002224
+export SOURCE_DATE_EPOCH=1683128605
 export GCC_IGNORE_WERROR=1
-export CFLAGS="$CFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz "
-export FCFLAGS="$FFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz "
-export FFLAGS="$FFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz "
-export CXXFLAGS="$CXXFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz "
+export CFLAGS="$CFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+export FCFLAGS="$FFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+export FFLAGS="$FFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+export CXXFLAGS="$CXXFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
 CFLAGS="$CFLAGS" CXXFLAGS="$CXXFLAGS" LDFLAGS="$LDFLAGS" meson --libdir=lib64 --prefix=/usr --buildtype=plain -Dbluez5-backend-ofono=disabled \
 -Dinstalled_tests=enabled \
 -Dpipewire-jack=enabled \
@@ -223,6 +212,34 @@ rm -fv %{buildroot}/usr/lib64/pipewire-*/jack/libjackserver.so*
 
 %files bin
 %defattr(-,root,root,-)
+/V3/usr/bin/pipewire
+/V3/usr/bin/pipewire-aes67
+/V3/usr/bin/pipewire-avb
+/V3/usr/bin/pipewire-pulse
+/V3/usr/bin/pw-cat
+/V3/usr/bin/pw-cli
+/V3/usr/bin/pw-config
+/V3/usr/bin/pw-dot
+/V3/usr/bin/pw-dsdplay
+/V3/usr/bin/pw-dump
+/V3/usr/bin/pw-encplay
+/V3/usr/bin/pw-link
+/V3/usr/bin/pw-loopback
+/V3/usr/bin/pw-metadata
+/V3/usr/bin/pw-mididump
+/V3/usr/bin/pw-midiplay
+/V3/usr/bin/pw-midirecord
+/V3/usr/bin/pw-mon
+/V3/usr/bin/pw-play
+/V3/usr/bin/pw-profiler
+/V3/usr/bin/pw-record
+/V3/usr/bin/pw-reserve
+/V3/usr/bin/pw-top
+/V3/usr/bin/spa-acp-tool
+/V3/usr/bin/spa-inspect
+/V3/usr/bin/spa-json-dump
+/V3/usr/bin/spa-monitor
+/V3/usr/bin/spa-resample
 /usr/bin/pipewire
 /usr/bin/pipewire-aes67
 /usr/bin/pipewire-avb
@@ -253,7 +270,6 @@ rm -fv %{buildroot}/usr/lib64/pipewire-*/jack/libjackserver.so*
 /usr/bin/spa-json-dump
 /usr/bin/spa-monitor
 /usr/bin/spa-resample
-/usr/share/clear/optimized-elf/bin*
 
 %files config
 %defattr(-,root,root,-)
@@ -364,6 +380,7 @@ rm -fv %{buildroot}/usr/lib64/pipewire-*/jack/libjackserver.so*
 
 %files dev
 %defattr(-,root,root,-)
+/V3/usr/lib64/libpipewire-0.3.so
 /usr/include/pipewire-0.3/pipewire/array.h
 /usr/include/pipewire-0.3/pipewire/buffers.h
 /usr/include/pipewire-0.3/pipewire/client.h
@@ -561,21 +578,78 @@ rm -fv %{buildroot}/usr/lib64/pipewire-*/jack/libjackserver.so*
 /usr/include/spa-0.2/spa/utils/string.h
 /usr/include/spa-0.2/spa/utils/type-info.h
 /usr/include/spa-0.2/spa/utils/type.h
-/usr/lib64/glibc-hwcaps/x86-64-v3/libpipewire-0.3.so
 /usr/lib64/libpipewire-0.3.so
 /usr/lib64/pkgconfig/libpipewire-0.3.pc
 /usr/lib64/pkgconfig/libspa-0.2.pc
 
-%files filemap
-%defattr(-,root,root,-)
-/usr/share/clear/filemap/filemap-pipewire
-
 %files lib
 %defattr(-,root,root,-)
+/V3/usr/lib64/alsa-lib/libasound_module_ctl_pipewire.so
+/V3/usr/lib64/alsa-lib/libasound_module_pcm_pipewire.so
+/V3/usr/lib64/gstreamer-1.0/libgstpipewire.so
+/V3/usr/lib64/libpipewire-0.3.so.0
+/V3/usr/lib64/libpipewire-0.3.so.0.370.0
+/V3/usr/lib64/pipewire-0.3/jack/libjack.so
+/V3/usr/lib64/pipewire-0.3/jack/libjack.so.0
+/V3/usr/lib64/pipewire-0.3/jack/libjack.so.0.370.0
+/V3/usr/lib64/pipewire-0.3/jack/libjacknet.so
+/V3/usr/lib64/pipewire-0.3/jack/libjacknet.so.0
+/V3/usr/lib64/pipewire-0.3/jack/libjacknet.so.0.370.0
+/V3/usr/lib64/pipewire-0.3/jack/libjackserver.so
+/V3/usr/lib64/pipewire-0.3/jack/libjackserver.so.0
+/V3/usr/lib64/pipewire-0.3/jack/libjackserver.so.0.370.0
+/V3/usr/lib64/pipewire-0.3/libpipewire-module-access.so
+/V3/usr/lib64/pipewire-0.3/libpipewire-module-adapter.so
+/V3/usr/lib64/pipewire-0.3/libpipewire-module-avb.so
+/V3/usr/lib64/pipewire-0.3/libpipewire-module-client-device.so
+/V3/usr/lib64/pipewire-0.3/libpipewire-module-client-node.so
+/V3/usr/lib64/pipewire-0.3/libpipewire-module-combine-stream.so
+/V3/usr/lib64/pipewire-0.3/libpipewire-module-echo-cancel.so
+/V3/usr/lib64/pipewire-0.3/libpipewire-module-fallback-sink.so
+/V3/usr/lib64/pipewire-0.3/libpipewire-module-filter-chain.so
+/V3/usr/lib64/pipewire-0.3/libpipewire-module-link-factory.so
+/V3/usr/lib64/pipewire-0.3/libpipewire-module-loopback.so
+/V3/usr/lib64/pipewire-0.3/libpipewire-module-metadata.so
+/V3/usr/lib64/pipewire-0.3/libpipewire-module-pipe-tunnel.so
+/V3/usr/lib64/pipewire-0.3/libpipewire-module-portal.so
+/V3/usr/lib64/pipewire-0.3/libpipewire-module-profiler.so
+/V3/usr/lib64/pipewire-0.3/libpipewire-module-protocol-native.so
+/V3/usr/lib64/pipewire-0.3/libpipewire-module-protocol-pulse.so
+/V3/usr/lib64/pipewire-0.3/libpipewire-module-protocol-simple.so
+/V3/usr/lib64/pipewire-0.3/libpipewire-module-pulse-tunnel.so
+/V3/usr/lib64/pipewire-0.3/libpipewire-module-raop-sink.so
+/V3/usr/lib64/pipewire-0.3/libpipewire-module-rt.so
+/V3/usr/lib64/pipewire-0.3/libpipewire-module-rtkit.so
+/V3/usr/lib64/pipewire-0.3/libpipewire-module-rtp-sap.so
+/V3/usr/lib64/pipewire-0.3/libpipewire-module-rtp-sink.so
+/V3/usr/lib64/pipewire-0.3/libpipewire-module-rtp-source.so
+/V3/usr/lib64/pipewire-0.3/libpipewire-module-session-manager.so
+/V3/usr/lib64/pipewire-0.3/libpipewire-module-spa-device-factory.so
+/V3/usr/lib64/pipewire-0.3/libpipewire-module-spa-device.so
+/V3/usr/lib64/pipewire-0.3/libpipewire-module-spa-node-factory.so
+/V3/usr/lib64/pipewire-0.3/libpipewire-module-spa-node.so
+/V3/usr/lib64/pipewire-0.3/libpipewire-module-x11-bell.so
+/V3/usr/lib64/pipewire-0.3/v4l2/libpw-v4l2.so
+/V3/usr/lib64/spa-0.2/aec/libspa-aec-null.so
+/V3/usr/lib64/spa-0.2/alsa/libspa-alsa.so
+/V3/usr/lib64/spa-0.2/audioconvert/libspa-audioconvert.so
+/V3/usr/lib64/spa-0.2/audiomixer/libspa-audiomixer.so
+/V3/usr/lib64/spa-0.2/audiotestsrc/libspa-audiotestsrc.so
+/V3/usr/lib64/spa-0.2/avb/libspa-avb.so
+/V3/usr/lib64/spa-0.2/bluez5/libspa-bluez5.so
+/V3/usr/lib64/spa-0.2/bluez5/libspa-codec-bluez5-faststream.so
+/V3/usr/lib64/spa-0.2/bluez5/libspa-codec-bluez5-opus.so
+/V3/usr/lib64/spa-0.2/bluez5/libspa-codec-bluez5-sbc.so
+/V3/usr/lib64/spa-0.2/control/libspa-control.so
+/V3/usr/lib64/spa-0.2/jack/libspa-jack.so
+/V3/usr/lib64/spa-0.2/support/libspa-dbus.so
+/V3/usr/lib64/spa-0.2/support/libspa-journal.so
+/V3/usr/lib64/spa-0.2/support/libspa-support.so
+/V3/usr/lib64/spa-0.2/v4l2/libspa-v4l2.so
+/V3/usr/lib64/spa-0.2/videoconvert/libspa-videoconvert.so
+/V3/usr/lib64/spa-0.2/videotestsrc/libspa-videotestsrc.so
 /usr/lib64/alsa-lib/libasound_module_ctl_pipewire.so
 /usr/lib64/alsa-lib/libasound_module_pcm_pipewire.so
-/usr/lib64/glibc-hwcaps/x86-64-v3/libpipewire-0.3.so.0
-/usr/lib64/glibc-hwcaps/x86-64-v3/libpipewire-0.3.so.0.370.0
 /usr/lib64/gstreamer-1.0/libgstpipewire.so
 /usr/lib64/libpipewire-0.3.so.0
 /usr/lib64/libpipewire-0.3.so.0.370.0
@@ -629,7 +703,6 @@ rm -fv %{buildroot}/usr/lib64/pipewire-*/jack/libjackserver.so*
 /usr/lib64/spa-0.2/v4l2/libspa-v4l2.so
 /usr/lib64/spa-0.2/videoconvert/libspa-videoconvert.so
 /usr/lib64/spa-0.2/videotestsrc/libspa-videotestsrc.so
-/usr/share/clear/optimized-elf/other*
 
 %files license
 %defattr(0644,root,root,0755)
@@ -663,6 +736,50 @@ rm -fv %{buildroot}/usr/lib64/pipewire-*/jack/libjackserver.so*
 
 %files tests
 %defattr(-,root,root,-)
+/V3/usr/libexec/installed-tests/pipewire-0.3/audioconvert/benchmark-fmt-ops
+/V3/usr/libexec/installed-tests/pipewire-0.3/audioconvert/benchmark-resample
+/V3/usr/libexec/installed-tests/pipewire-0.3/audioconvert/test-audioadapter
+/V3/usr/libexec/installed-tests/pipewire-0.3/audioconvert/test-audioconvert
+/V3/usr/libexec/installed-tests/pipewire-0.3/audioconvert/test-channelmix
+/V3/usr/libexec/installed-tests/pipewire-0.3/audioconvert/test-fmt-ops
+/V3/usr/libexec/installed-tests/pipewire-0.3/audioconvert/test-peaks
+/V3/usr/libexec/installed-tests/pipewire-0.3/audioconvert/test-resample
+/V3/usr/libexec/installed-tests/pipewire-0.3/audiomixer/benchmark-mix-ops
+/V3/usr/libexec/installed-tests/pipewire-0.3/audiomixer/test-mix-ops
+/V3/usr/libexec/installed-tests/pipewire-0.3/bluez5/test-midi
+/V3/usr/libexec/installed-tests/pipewire-0.3/examples/audio-capture
+/V3/usr/libexec/installed-tests/pipewire-0.3/examples/audio-dsp-filter
+/V3/usr/libexec/installed-tests/pipewire-0.3/examples/audio-dsp-src
+/V3/usr/libexec/installed-tests/pipewire-0.3/examples/audio-src
+/V3/usr/libexec/installed-tests/pipewire-0.3/examples/bluez-session
+/V3/usr/libexec/installed-tests/pipewire-0.3/examples/export-sink
+/V3/usr/libexec/installed-tests/pipewire-0.3/examples/export-source
+/V3/usr/libexec/installed-tests/pipewire-0.3/examples/export-spa
+/V3/usr/libexec/installed-tests/pipewire-0.3/examples/export-spa-device
+/V3/usr/libexec/installed-tests/pipewire-0.3/examples/jack/video-dsp-play
+/V3/usr/libexec/installed-tests/pipewire-0.3/examples/local-v4l2
+/V3/usr/libexec/installed-tests/pipewire-0.3/examples/spa/adapter-control
+/V3/usr/libexec/installed-tests/pipewire-0.3/examples/spa/example-control
+/V3/usr/libexec/installed-tests/pipewire-0.3/examples/spa/local-v4l2
+/V3/usr/libexec/installed-tests/pipewire-0.3/examples/video-dsp-play
+/V3/usr/libexec/installed-tests/pipewire-0.3/examples/video-play
+/V3/usr/libexec/installed-tests/pipewire-0.3/examples/video-play-fixate
+/V3/usr/libexec/installed-tests/pipewire-0.3/examples/video-play-pull
+/V3/usr/libexec/installed-tests/pipewire-0.3/examples/video-play-reneg
+/V3/usr/libexec/installed-tests/pipewire-0.3/examples/video-src
+/V3/usr/libexec/installed-tests/pipewire-0.3/examples/video-src-alloc
+/V3/usr/libexec/installed-tests/pipewire-0.3/examples/video-src-fixate
+/V3/usr/libexec/installed-tests/pipewire-0.3/examples/video-src-reneg
+/V3/usr/libexec/installed-tests/pipewire-0.3/pw-test-cpp
+/V3/usr/libexec/installed-tests/pipewire-0.3/pw-test-endpoint
+/V3/usr/libexec/installed-tests/pipewire-0.3/pw-test-filter
+/V3/usr/libexec/installed-tests/pipewire-0.3/pw-test-interfaces
+/V3/usr/libexec/installed-tests/pipewire-0.3/pw-test-pipewire-alsa-stress
+/V3/usr/libexec/installed-tests/pipewire-0.3/pw-test-protocol-native
+/V3/usr/libexec/installed-tests/pipewire-0.3/pw-test-stream
+/V3/usr/libexec/installed-tests/pipewire-0.3/spa-benchmark-dict
+/V3/usr/libexec/installed-tests/pipewire-0.3/spa-benchmark-pod
+/V3/usr/libexec/installed-tests/pipewire-0.3/spa-stress-ringbuffer
 /usr/libexec/installed-tests/pipewire-0.3/audioconvert/benchmark-fmt-ops
 /usr/libexec/installed-tests/pipewire-0.3/audioconvert/benchmark-resample
 /usr/libexec/installed-tests/pipewire-0.3/audioconvert/test-audioadapter
@@ -707,7 +824,6 @@ rm -fv %{buildroot}/usr/lib64/pipewire-*/jack/libjackserver.so*
 /usr/libexec/installed-tests/pipewire-0.3/spa-benchmark-dict
 /usr/libexec/installed-tests/pipewire-0.3/spa-benchmark-pod
 /usr/libexec/installed-tests/pipewire-0.3/spa-stress-ringbuffer
-/usr/share/clear/optimized-elf/test*
 /usr/share/installed-tests/pipewire-0.3/audioconvert/benchmark-fmt-ops.test
 /usr/share/installed-tests/pipewire-0.3/audioconvert/benchmark-resample.test
 /usr/share/installed-tests/pipewire-0.3/audioconvert/test-audioadapter.test
