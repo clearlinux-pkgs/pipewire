@@ -5,7 +5,7 @@
 #
 Name     : pipewire
 Version  : 0.3.71
-Release  : 85
+Release  : 87
 URL      : https://gitlab.freedesktop.org/pipewire/pipewire/-/archive/0.3.71/pipewire-0.3.71.tar.gz
 Source0  : https://gitlab.freedesktop.org/pipewire/pipewire/-/archive/0.3.71/pipewire-0.3.71.tar.gz
 Summary  : No detailed summary available
@@ -161,7 +161,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1684337649
+export SOURCE_DATE_EPOCH=1685474954
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
 export FCFLAGS="$FFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
@@ -214,26 +214,17 @@ rm -fv %{buildroot}*/usr/lib64/pipewire-*/jack/libjackserver.so*
 %files bin
 %defattr(-,root,root,-)
 /V3/usr/bin/pipewire
-/V3/usr/bin/pipewire-aes67
-/V3/usr/bin/pipewire-avb
-/V3/usr/bin/pipewire-pulse
 /V3/usr/bin/pw-cat
 /V3/usr/bin/pw-cli
 /V3/usr/bin/pw-config
 /V3/usr/bin/pw-dot
-/V3/usr/bin/pw-dsdplay
 /V3/usr/bin/pw-dump
-/V3/usr/bin/pw-encplay
 /V3/usr/bin/pw-link
 /V3/usr/bin/pw-loopback
 /V3/usr/bin/pw-metadata
 /V3/usr/bin/pw-mididump
-/V3/usr/bin/pw-midiplay
-/V3/usr/bin/pw-midirecord
 /V3/usr/bin/pw-mon
-/V3/usr/bin/pw-play
 /V3/usr/bin/pw-profiler
-/V3/usr/bin/pw-record
 /V3/usr/bin/pw-reserve
 /V3/usr/bin/pw-top
 /V3/usr/bin/spa-acp-tool
@@ -381,7 +372,6 @@ rm -fv %{buildroot}*/usr/lib64/pipewire-*/jack/libjackserver.so*
 
 %files dev
 %defattr(-,root,root,-)
-/V3/usr/lib64/libpipewire-0.3.so
 /usr/include/pipewire-0.3/pipewire/array.h
 /usr/include/pipewire-0.3/pipewire/buffers.h
 /usr/include/pipewire-0.3/pipewire/client.h
@@ -588,7 +578,6 @@ rm -fv %{buildroot}*/usr/lib64/pipewire-*/jack/libjackserver.so*
 /V3/usr/lib64/alsa-lib/libasound_module_ctl_pipewire.so
 /V3/usr/lib64/alsa-lib/libasound_module_pcm_pipewire.so
 /V3/usr/lib64/gstreamer-1.0/libgstpipewire.so
-/V3/usr/lib64/libpipewire-0.3.so.0
 /V3/usr/lib64/libpipewire-0.3.so.0.371.0
 /V3/usr/lib64/pipewire-0.3/libpipewire-module-access.so
 /V3/usr/lib64/pipewire-0.3/libpipewire-module-adapter.so
