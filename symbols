@@ -30,6 +30,8 @@ libpipewire-0.3.so.0:pw_context_create_metadata
 libpipewire-0.3.so.0:pw_context_create_node
 libpipewire-0.3.so.0:pw_context_create_port
 libpipewire-0.3.so.0:pw_context_destroy
+libpipewire-0.3.so.0:pw_context_driver_add_listener
+libpipewire-0.3.so.0:pw_context_driver_remove_listener
 libpipewire-0.3.so.0:pw_context_find_export_type
 libpipewire-0.3.so.0:pw_context_find_factory
 libpipewire-0.3.so.0:pw_context_find_global
