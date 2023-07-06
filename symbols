@@ -344,7 +344,6 @@ libpipewire-0.3.so.0:pw_proxy_destroy
 libpipewire-0.3.so.0:pw_proxy_error
 libpipewire-0.3.so.0:pw_proxy_errorf
 libpipewire-0.3.so.0:pw_proxy_get_bound_id
-libpipewire-0.3.so.0:pw_proxy_get_core
 libpipewire-0.3.so.0:pw_proxy_get_id
 libpipewire-0.3.so.0:pw_proxy_get_marshal
 libpipewire-0.3.so.0:pw_proxy_get_object_listeners

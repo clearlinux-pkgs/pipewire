@@ -1,10 +1,9 @@
-0.3.72
+0.3.73
 libcap-dev
 libusb-dev
 openssl-dev
 pkgconfig(libcanberra)
 pkgconfig(libcap)
-pkgconfig(libffado)
 pkgconfig(libusb-1.0)
 pkgconfig(readline)
 pypi-docutils
