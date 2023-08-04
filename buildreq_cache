@@ -1,7 +1,8 @@
-0.3.75
+0.3.77
 libcap-dev
 libusb-dev
 openssl-dev
+pkgconfig(lc3)
 pkgconfig(libcanberra)
 pkgconfig(libcap)
 pkgconfig(libusb-1.0)

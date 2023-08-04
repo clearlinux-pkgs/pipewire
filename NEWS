@@ -1,3 +1,95 @@
+# PipeWire 0.3.77 (2023-08-04)
+
+This is a quick bugfix release that is API and ABI compatible with previous
+0.3.x releases.
+
+## Highlights
+  - Fix a bug in ALSA source where the available number of samples was miscaluclated
+    and resulted in xruns in some cases.
+  - A new L permission was added to make it possible to force a link between
+    nodes even when the nodes can't see eachother.
+  - The VBAN module now supports midi send and receive as well.
+  - Many cleanups and small fixes.
+
+
+## PipeWire
+  - Global objects now only show permissions that apply to them. The permissions
+    required to perform various API calls are documented.
+  - A new L permission was added to make it possible to force a link between
+    nodes even when the nodes can't see eachother.
+  - Config files need to end with .conf.
+  - The client.api is added the to global properties of a node.
+
+## modules
+  - The VBAN module now supports midi send and receive as well.
+  - Fix module-profiler alignment and make sure we don't overrun our buffers with
+    many nodes.
+  - Protect libcanberra calls with a mutex because it is not thread safe. (#2834)
+
+## SPA
+  - Support older compilers for spa_clear_ptr().
+  - Fix a bug in ALSA source where the available number of samples was miscaluclated
+    and resulted in xruns. (#3395)
+  - Don't set inotify on /dev but on the videoX devices directly. Setting inotify
+    on /dev would cause a lot of spurious wakeups and lock contention in the
+    fsnotify subsystem on some benchmarks.
+  - Audioconvert now rate limits the warnings when it runs out of buffers. (#3384)
+
+## pulse-server
+  - Some bugs and inconsistencies were fixed in device lookup.
+  - Improve subscribe event emission, detect changes to the sink or the monitor
+    and send the right sink/source event. (#3388)
+
+## JACK
+  - The libjack.so now has a minor version of 3 and a micro version of the pipewire
+    version.
+  - JACK clients will now see portregistration from other jack clients when they
+    activate/deactivate like real JACK. (#3260)
+
+## bluetooth
+  - Use some more autoptr cleanups, fix some leaks.
+
+Older versions:
+
+
+# PipeWire 0.3.76 (2023-07-28)
+
+This is a quick bugfix release that is API and ABI compatible with previous
+0.3.x releases.
+
+## Highlights
+  - Fix a regression that would cause the MPV pipewire backend to fail because
+    of a spurious thread-loop signal.
+  - Fix a crash when DBus is not found.
+  - ALSA hires timestamps are now disabled by default.
+  - Some more fixes and improvements.
+
+## PipeWire
+  - A new option was added to pw-thread-loop to signal when the thread starts.
+    This is only used in module-rt to avoid regressions in mpv. (#3374)
+  - Fix a compilation problem.
+  - Stream flags now only set the properties when not already set. This fixes
+    a regression with node autoconnect. (#3382)
+
+## Tools
+  - pw-cat will now stop when the stream is disconnected. (#2731)
+  - Improve the pw-cat man page, mention that stdin/stdout handling is only
+    on raw data.
+
+## modules
+  - module-rt will now not crash when dbus is not available but error out as
+    before.
+  - A new VBAN (vb-audio.com) sender and receiver was added. (#3380)
+
+## SPA
+  - Add an option in audioconvert to disable volume updates. (#3361)
+  - ALSA hires timestamps are disabled by default because many drivers seem to
+    give wrong timestamps and cause extra delay.
+
+## bluetooth
+  - LE Audio support is now enabled by default when liblc3 is available now that
+    bluez has support for detecting the hardware features.
+
 # PipeWire 0.3.75 (2023-07-21)
 
 This is a bugfix release that is API and ABI compatible with previous
@@ -47,9 +139,6 @@ This is a bugfix release that is API and ABI compatible with previous
     and filter out duplicates.
   - A bug with draining was fixed where a buffer would be marked EMPTY and would not
     play when it contained drained samples. (#3365)
-
-Older versions:
-
 
 # PipeWire 0.3.74 (2023-07-12)
 
