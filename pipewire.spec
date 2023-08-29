@@ -4,10 +4,10 @@
 # Using build pattern: meson
 #
 Name     : pipewire
-Version  : 0.3.78
-Release  : 95
-URL      : https://gitlab.freedesktop.org/pipewire/pipewire/-/archive/0.3.78/pipewire-0.3.78.tar.gz
-Source0  : https://gitlab.freedesktop.org/pipewire/pipewire/-/archive/0.3.78/pipewire-0.3.78.tar.gz
+Version  : 0.3.79
+Release  : 96
+URL      : https://gitlab.freedesktop.org/pipewire/pipewire/-/archive/0.3.79/pipewire-0.3.79.tar.gz
+Source0  : https://gitlab.freedesktop.org/pipewire/pipewire/-/archive/0.3.79/pipewire-0.3.79.tar.gz
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : MIT
@@ -150,10 +150,10 @@ tests components for the pipewire package.
 
 
 %prep
-%setup -q -n pipewire-0.3.78
-cd %{_builddir}/pipewire-0.3.78
+%setup -q -n pipewire-0.3.79
+cd %{_builddir}/pipewire-0.3.79
 pushd ..
-cp -a pipewire-0.3.78 buildavx2
+cp -a pipewire-0.3.79 buildavx2
 popd
 
 %build
@@ -161,7 +161,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1692714670
+export SOURCE_DATE_EPOCH=1693323288
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
 export FCFLAGS="$FFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
@@ -316,6 +316,7 @@ rm -fv %{buildroot}*/usr/lib64/pipewire-*/jack/libjackserver.so*
 /usr/share/alsa-card-profile/mixer/paths/usb-gaming-headset-output-mono.conf
 /usr/share/alsa-card-profile/mixer/paths/usb-gaming-headset-output-stereo.conf
 /usr/share/alsa-card-profile/mixer/paths/virtual-surround-7.1.conf
+/usr/share/alsa-card-profile/mixer/profile-sets/9999-custom.conf
 /usr/share/alsa-card-profile/mixer/profile-sets/analog-only.conf
 /usr/share/alsa-card-profile/mixer/profile-sets/asus-xonar-se.conf
 /usr/share/alsa-card-profile/mixer/profile-sets/audigy.conf
@@ -580,7 +581,7 @@ rm -fv %{buildroot}*/usr/lib64/pipewire-*/jack/libjackserver.so*
 /V3/usr/lib64/alsa-lib/libasound_module_ctl_pipewire.so
 /V3/usr/lib64/alsa-lib/libasound_module_pcm_pipewire.so
 /V3/usr/lib64/gstreamer-1.0/libgstpipewire.so
-/V3/usr/lib64/libpipewire-0.3.so.0.378.0
+/V3/usr/lib64/libpipewire-0.3.so.0.379.0
 /V3/usr/lib64/pipewire-0.3/libpipewire-module-access.so
 /V3/usr/lib64/pipewire-0.3/libpipewire-module-adapter.so
 /V3/usr/lib64/pipewire-0.3/libpipewire-module-avb.so
@@ -641,7 +642,7 @@ rm -fv %{buildroot}*/usr/lib64/pipewire-*/jack/libjackserver.so*
 /usr/lib64/alsa-lib/libasound_module_pcm_pipewire.so
 /usr/lib64/gstreamer-1.0/libgstpipewire.so
 /usr/lib64/libpipewire-0.3.so.0
-/usr/lib64/libpipewire-0.3.so.0.378.0
+/usr/lib64/libpipewire-0.3.so.0.379.0
 /usr/lib64/pipewire-0.3/libpipewire-module-access.so
 /usr/lib64/pipewire-0.3/libpipewire-module-adapter.so
 /usr/lib64/pipewire-0.3/libpipewire-module-avb.so
