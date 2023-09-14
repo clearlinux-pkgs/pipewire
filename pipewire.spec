@@ -4,10 +4,10 @@
 # Using build pattern: meson
 #
 Name     : pipewire
-Version  : 0.3.79
-Release  : 96
-URL      : https://gitlab.freedesktop.org/pipewire/pipewire/-/archive/0.3.79/pipewire-0.3.79.tar.gz
-Source0  : https://gitlab.freedesktop.org/pipewire/pipewire/-/archive/0.3.79/pipewire-0.3.79.tar.gz
+Version  : 0.3.80
+Release  : 97
+URL      : https://gitlab.freedesktop.org/pipewire/pipewire/-/archive/0.3.80/pipewire-0.3.80.tar.gz
+Source0  : https://gitlab.freedesktop.org/pipewire/pipewire/-/archive/0.3.80/pipewire-0.3.80.tar.gz
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : MIT
@@ -150,10 +150,10 @@ tests components for the pipewire package.
 
 
 %prep
-%setup -q -n pipewire-0.3.79
-cd %{_builddir}/pipewire-0.3.79
+%setup -q -n pipewire-0.3.80
+cd %{_builddir}/pipewire-0.3.80
 pushd ..
-cp -a pipewire-0.3.79 buildavx2
+cp -a pipewire-0.3.80 buildavx2
 popd
 
 %build
@@ -161,7 +161,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1693323288
+export SOURCE_DATE_EPOCH=1694706261
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
 export FCFLAGS="$FFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
@@ -517,6 +517,9 @@ rm -fv %{buildroot}*/usr/lib64/pipewire-*/jack/libjackserver.so*
 /usr/include/spa-0.2/spa/param/props.h
 /usr/include/spa-0.2/spa/param/route-types.h
 /usr/include/spa-0.2/spa/param/route.h
+/usr/include/spa-0.2/spa/param/tag-types.h
+/usr/include/spa-0.2/spa/param/tag-utils.h
+/usr/include/spa-0.2/spa/param/tag.h
 /usr/include/spa-0.2/spa/param/type-info.h
 /usr/include/spa-0.2/spa/param/video/chroma.h
 /usr/include/spa-0.2/spa/param/video/color.h
@@ -581,7 +584,7 @@ rm -fv %{buildroot}*/usr/lib64/pipewire-*/jack/libjackserver.so*
 /V3/usr/lib64/alsa-lib/libasound_module_ctl_pipewire.so
 /V3/usr/lib64/alsa-lib/libasound_module_pcm_pipewire.so
 /V3/usr/lib64/gstreamer-1.0/libgstpipewire.so
-/V3/usr/lib64/libpipewire-0.3.so.0.379.0
+/V3/usr/lib64/libpipewire-0.3.so.0.380.0
 /V3/usr/lib64/pipewire-0.3/libpipewire-module-access.so
 /V3/usr/lib64/pipewire-0.3/libpipewire-module-adapter.so
 /V3/usr/lib64/pipewire-0.3/libpipewire-module-avb.so
@@ -642,7 +645,7 @@ rm -fv %{buildroot}*/usr/lib64/pipewire-*/jack/libjackserver.so*
 /usr/lib64/alsa-lib/libasound_module_pcm_pipewire.so
 /usr/lib64/gstreamer-1.0/libgstpipewire.so
 /usr/lib64/libpipewire-0.3.so.0
-/usr/lib64/libpipewire-0.3.so.0.379.0
+/usr/lib64/libpipewire-0.3.so.0.380.0
 /usr/lib64/pipewire-0.3/libpipewire-module-access.so
 /usr/lib64/pipewire-0.3/libpipewire-module-adapter.so
 /usr/lib64/pipewire-0.3/libpipewire-module-avb.so
