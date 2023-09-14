@@ -5,7 +5,7 @@
 #
 Name     : pipewire
 Version  : 0.3.80
-Release  : 97
+Release  : 99
 URL      : https://gitlab.freedesktop.org/pipewire/pipewire/-/archive/0.3.80/pipewire-0.3.80.tar.gz
 Source0  : https://gitlab.freedesktop.org/pipewire/pipewire/-/archive/0.3.80/pipewire-0.3.80.tar.gz
 Summary  : No detailed summary available
@@ -140,15 +140,6 @@ Requires: systemd
 services components for the pipewire package.
 
 
-%package tests
-Summary: tests components for the pipewire package.
-Group: Default
-Requires: pipewire = %{version}-%{release}
-
-%description tests
-tests components for the pipewire package.
-
-
 %prep
 %setup -q -n pipewire-0.3.80
 cd %{_builddir}/pipewire-0.3.80
@@ -161,26 +152,20 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1694706261
+export SOURCE_DATE_EPOCH=1694717402
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
 export FCFLAGS="$FFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
 export FFLAGS="$FFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
 export CXXFLAGS="$CXXFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
-CFLAGS="$CFLAGS" CXXFLAGS="$CXXFLAGS" LDFLAGS="$LDFLAGS" meson --libdir=lib64 --prefix=/usr --buildtype=plain -Dbluez5-backend-ofono=disabled \
--Dinstalled_tests=enabled \
--Dpipewire-jack=enabled \
+CFLAGS="$CFLAGS" CXXFLAGS="$CXXFLAGS" LDFLAGS="$LDFLAGS" meson --libdir=lib64 --prefix=/usr --buildtype=plain -Dpipewire-jack=enabled \
 -Dudevrulesdir="/usr/lib/udev/rules.d" \
--Dvulkan=disabled \
 -Dlibcamera=disabled \
 -Dsession-managers=[] \
 -Davahi=disabled  builddir
 ninja -v -C builddir
-CFLAGS="$CFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 -O3" CXXFLAGS="$CXXFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 " LDFLAGS="$LDFLAGS -m64 -march=x86-64-v3" meson --libdir=lib64 --prefix=/usr --buildtype=plain -Dbluez5-backend-ofono=disabled \
--Dinstalled_tests=enabled \
--Dpipewire-jack=enabled \
+CFLAGS="$CFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 -O3" CXXFLAGS="$CXXFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 " LDFLAGS="$LDFLAGS -m64 -march=x86-64-v3" meson --libdir=lib64 --prefix=/usr --buildtype=plain -Dpipewire-jack=enabled \
 -Dudevrulesdir="/usr/lib/udev/rules.d" \
--Dvulkan=disabled \
 -Dlibcamera=disabled \
 -Dsession-managers=[] \
 -Davahi=disabled  builddiravx2
@@ -732,120 +717,6 @@ rm -fv %{buildroot}*/usr/lib64/pipewire-*/jack/libjackserver.so*
 /usr/lib/systemd/user/pipewire-pulse.socket
 /usr/lib/systemd/user/pipewire.service
 /usr/lib/systemd/user/pipewire.socket
-
-%files tests
-%defattr(-,root,root,-)
-/V3/usr/libexec/installed-tests/pipewire-0.3/audioconvert/benchmark-fmt-ops
-/V3/usr/libexec/installed-tests/pipewire-0.3/audioconvert/benchmark-resample
-/V3/usr/libexec/installed-tests/pipewire-0.3/audioconvert/test-audioadapter
-/V3/usr/libexec/installed-tests/pipewire-0.3/audioconvert/test-audioconvert
-/V3/usr/libexec/installed-tests/pipewire-0.3/audioconvert/test-channelmix
-/V3/usr/libexec/installed-tests/pipewire-0.3/audioconvert/test-fmt-ops
-/V3/usr/libexec/installed-tests/pipewire-0.3/audioconvert/test-peaks
-/V3/usr/libexec/installed-tests/pipewire-0.3/audioconvert/test-resample
-/V3/usr/libexec/installed-tests/pipewire-0.3/audiomixer/benchmark-mix-ops
-/V3/usr/libexec/installed-tests/pipewire-0.3/audiomixer/test-mix-ops
-/V3/usr/libexec/installed-tests/pipewire-0.3/bluez5/test-midi
-/V3/usr/libexec/installed-tests/pipewire-0.3/examples/audio-capture
-/V3/usr/libexec/installed-tests/pipewire-0.3/examples/audio-dsp-filter
-/V3/usr/libexec/installed-tests/pipewire-0.3/examples/audio-dsp-src
-/V3/usr/libexec/installed-tests/pipewire-0.3/examples/audio-src
-/V3/usr/libexec/installed-tests/pipewire-0.3/examples/bluez-session
-/V3/usr/libexec/installed-tests/pipewire-0.3/examples/export-sink
-/V3/usr/libexec/installed-tests/pipewire-0.3/examples/export-source
-/V3/usr/libexec/installed-tests/pipewire-0.3/examples/export-spa
-/V3/usr/libexec/installed-tests/pipewire-0.3/examples/export-spa-device
-/V3/usr/libexec/installed-tests/pipewire-0.3/examples/internal
-/V3/usr/libexec/installed-tests/pipewire-0.3/examples/jack/video-dsp-play
-/V3/usr/libexec/installed-tests/pipewire-0.3/examples/local-v4l2
-/V3/usr/libexec/installed-tests/pipewire-0.3/examples/spa/adapter-control
-/V3/usr/libexec/installed-tests/pipewire-0.3/examples/spa/example-control
-/V3/usr/libexec/installed-tests/pipewire-0.3/examples/spa/local-v4l2
-/V3/usr/libexec/installed-tests/pipewire-0.3/examples/video-dsp-play
-/V3/usr/libexec/installed-tests/pipewire-0.3/examples/video-play
-/V3/usr/libexec/installed-tests/pipewire-0.3/examples/video-play-fixate
-/V3/usr/libexec/installed-tests/pipewire-0.3/examples/video-play-pull
-/V3/usr/libexec/installed-tests/pipewire-0.3/examples/video-play-reneg
-/V3/usr/libexec/installed-tests/pipewire-0.3/examples/video-src
-/V3/usr/libexec/installed-tests/pipewire-0.3/examples/video-src-alloc
-/V3/usr/libexec/installed-tests/pipewire-0.3/examples/video-src-fixate
-/V3/usr/libexec/installed-tests/pipewire-0.3/examples/video-src-reneg
-/V3/usr/libexec/installed-tests/pipewire-0.3/pw-test-cpp
-/V3/usr/libexec/installed-tests/pipewire-0.3/pw-test-endpoint
-/V3/usr/libexec/installed-tests/pipewire-0.3/pw-test-filter
-/V3/usr/libexec/installed-tests/pipewire-0.3/pw-test-interfaces
-/V3/usr/libexec/installed-tests/pipewire-0.3/pw-test-pipewire-alsa-stress
-/V3/usr/libexec/installed-tests/pipewire-0.3/pw-test-protocol-native
-/V3/usr/libexec/installed-tests/pipewire-0.3/pw-test-stream
-/V3/usr/libexec/installed-tests/pipewire-0.3/spa-benchmark-dict
-/V3/usr/libexec/installed-tests/pipewire-0.3/spa-benchmark-pod
-/V3/usr/libexec/installed-tests/pipewire-0.3/spa-stress-ringbuffer
-/usr/libexec/installed-tests/pipewire-0.3/audioconvert/benchmark-fmt-ops
-/usr/libexec/installed-tests/pipewire-0.3/audioconvert/benchmark-resample
-/usr/libexec/installed-tests/pipewire-0.3/audioconvert/test-audioadapter
-/usr/libexec/installed-tests/pipewire-0.3/audioconvert/test-audioconvert
-/usr/libexec/installed-tests/pipewire-0.3/audioconvert/test-channelmix
-/usr/libexec/installed-tests/pipewire-0.3/audioconvert/test-fmt-ops
-/usr/libexec/installed-tests/pipewire-0.3/audioconvert/test-peaks
-/usr/libexec/installed-tests/pipewire-0.3/audioconvert/test-resample
-/usr/libexec/installed-tests/pipewire-0.3/audiomixer/benchmark-mix-ops
-/usr/libexec/installed-tests/pipewire-0.3/audiomixer/test-mix-ops
-/usr/libexec/installed-tests/pipewire-0.3/bluez5/test-midi
-/usr/libexec/installed-tests/pipewire-0.3/examples/audio-capture
-/usr/libexec/installed-tests/pipewire-0.3/examples/audio-dsp-filter
-/usr/libexec/installed-tests/pipewire-0.3/examples/audio-dsp-src
-/usr/libexec/installed-tests/pipewire-0.3/examples/audio-src
-/usr/libexec/installed-tests/pipewire-0.3/examples/bluez-session
-/usr/libexec/installed-tests/pipewire-0.3/examples/export-sink
-/usr/libexec/installed-tests/pipewire-0.3/examples/export-source
-/usr/libexec/installed-tests/pipewire-0.3/examples/export-spa
-/usr/libexec/installed-tests/pipewire-0.3/examples/export-spa-device
-/usr/libexec/installed-tests/pipewire-0.3/examples/internal
-/usr/libexec/installed-tests/pipewire-0.3/examples/jack/video-dsp-play
-/usr/libexec/installed-tests/pipewire-0.3/examples/local-v4l2
-/usr/libexec/installed-tests/pipewire-0.3/examples/spa/adapter-control
-/usr/libexec/installed-tests/pipewire-0.3/examples/spa/example-control
-/usr/libexec/installed-tests/pipewire-0.3/examples/spa/local-v4l2
-/usr/libexec/installed-tests/pipewire-0.3/examples/video-dsp-play
-/usr/libexec/installed-tests/pipewire-0.3/examples/video-play
-/usr/libexec/installed-tests/pipewire-0.3/examples/video-play-fixate
-/usr/libexec/installed-tests/pipewire-0.3/examples/video-play-pull
-/usr/libexec/installed-tests/pipewire-0.3/examples/video-play-reneg
-/usr/libexec/installed-tests/pipewire-0.3/examples/video-src
-/usr/libexec/installed-tests/pipewire-0.3/examples/video-src-alloc
-/usr/libexec/installed-tests/pipewire-0.3/examples/video-src-fixate
-/usr/libexec/installed-tests/pipewire-0.3/examples/video-src-reneg
-/usr/libexec/installed-tests/pipewire-0.3/pw-test-cpp
-/usr/libexec/installed-tests/pipewire-0.3/pw-test-endpoint
-/usr/libexec/installed-tests/pipewire-0.3/pw-test-filter
-/usr/libexec/installed-tests/pipewire-0.3/pw-test-interfaces
-/usr/libexec/installed-tests/pipewire-0.3/pw-test-pipewire-alsa-stress
-/usr/libexec/installed-tests/pipewire-0.3/pw-test-protocol-native
-/usr/libexec/installed-tests/pipewire-0.3/pw-test-stream
-/usr/libexec/installed-tests/pipewire-0.3/spa-benchmark-dict
-/usr/libexec/installed-tests/pipewire-0.3/spa-benchmark-pod
-/usr/libexec/installed-tests/pipewire-0.3/spa-stress-ringbuffer
-/usr/share/installed-tests/pipewire-0.3/audioconvert/benchmark-fmt-ops.test
-/usr/share/installed-tests/pipewire-0.3/audioconvert/benchmark-resample.test
-/usr/share/installed-tests/pipewire-0.3/audioconvert/test-audioadapter.test
-/usr/share/installed-tests/pipewire-0.3/audioconvert/test-audioconvert.test
-/usr/share/installed-tests/pipewire-0.3/audioconvert/test-channelmix.test
-/usr/share/installed-tests/pipewire-0.3/audioconvert/test-fmt-ops.test
-/usr/share/installed-tests/pipewire-0.3/audioconvert/test-peaks.test
-/usr/share/installed-tests/pipewire-0.3/audioconvert/test-resample.test
-/usr/share/installed-tests/pipewire-0.3/audiomixer/benchmark-mix-ops.test
-/usr/share/installed-tests/pipewire-0.3/audiomixer/test-mix-ops.test
-/usr/share/installed-tests/pipewire-0.3/bluez5/test-midi.test
-/usr/share/installed-tests/pipewire-0.3/pw-test-cpp.test
-/usr/share/installed-tests/pipewire-0.3/pw-test-endpoint.test
-/usr/share/installed-tests/pipewire-0.3/pw-test-filter.test
-/usr/share/installed-tests/pipewire-0.3/pw-test-interfaces.test
-/usr/share/installed-tests/pipewire-0.3/pw-test-pipewire-alsa-stress.test
-/usr/share/installed-tests/pipewire-0.3/pw-test-protocol-native.test
-/usr/share/installed-tests/pipewire-0.3/pw-test-stream.test
-/usr/share/installed-tests/pipewire-0.3/spa-benchmark-dict.test
-/usr/share/installed-tests/pipewire-0.3/spa-benchmark-pod.test
-/usr/share/installed-tests/pipewire-0.3/spa-stress-ringbuffer.test
 
 %files locales -f pipewire.lang
 %defattr(-,root,root,-)
