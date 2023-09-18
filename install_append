@@ -1,4 +1,6 @@
 rm -fv %{buildroot}*/usr/lib64/pipewire-*/jack/libjack.so*
 rm -fv %{buildroot}*/usr/lib64/pipewire-*/jack/libjacknet.so*
 rm -fv %{buildroot}*/usr/lib64/pipewire-*/jack/libjackserver.so*
-
+mkdir -p %{buildroot}/usr/lib/systemd/user/sockets.target.wants
+ln -s ../pipewire.socket %{buildroot}/usr/lib/systemd/user/sockets.target.wants
+ln -s ../pipewire-pulse.socket %{buildroot}/usr/lib/systemd/user/sockets.target.wants
