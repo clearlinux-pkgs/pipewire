@@ -1,4 +1,4 @@
-0.3.80
+0.3.81
 libcap-dev
 libusb-dev
 openssl-dev
@@ -6,7 +6,6 @@ pkgconfig(libcanberra)
 pkgconfig(libcap)
 pkgconfig(libusb-1.0)
 pkgconfig(readline)
-pkgconfig(webrtc-audio-processing-1)
 pypi-docutils
 readline-dev
 valgrind
