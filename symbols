@@ -1,4 +1,3 @@
-libpipewire-0.3.so.0:_pw_log_topic_new
 libpipewire-0.3.so.0:pw_buffers_clear
 libpipewire-0.3.so.0:pw_buffers_negotiate
 libpipewire-0.3.so.0:pw_check_library_version
