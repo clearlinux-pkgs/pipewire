@@ -6,10 +6,10 @@
 # autospec commit: e661f3a
 #
 Name     : pipewire
-Version  : 0.3.85
-Release  : 104
-URL      : https://gitlab.freedesktop.org/pipewire/pipewire/-/archive/0.3.85/pipewire-0.3.85.tar.gz
-Source0  : https://gitlab.freedesktop.org/pipewire/pipewire/-/archive/0.3.85/pipewire-0.3.85.tar.gz
+Version  : 1.0.0
+Release  : 105
+URL      : https://gitlab.freedesktop.org/pipewire/pipewire/-/archive/1.0.0/pipewire-1.0.0.tar.gz
+Source0  : https://gitlab.freedesktop.org/pipewire/pipewire/-/archive/1.0.0/pipewire-1.0.0.tar.gz
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : MIT
@@ -19,7 +19,6 @@ Requires: pipewire-data = %{version}-%{release}
 Requires: pipewire-lib = %{version}-%{release}
 Requires: pipewire-license = %{version}-%{release}
 Requires: pipewire-locales = %{version}-%{release}
-Requires: pipewire-man = %{version}-%{release}
 Requires: pipewire-services = %{version}-%{release}
 Requires: jack2
 Requires: pulseaudio
@@ -47,7 +46,6 @@ BuildRequires : pkgconfig(readline)
 BuildRequires : pkgconfig(sbc)
 BuildRequires : pkgconfig(sndfile)
 BuildRequires : pkgconfig(systemd)
-BuildRequires : pypi-docutils
 BuildRequires : readline-dev
 BuildRequires : valgrind
 # Suppress stripping binaries
@@ -126,14 +124,6 @@ Group: Default
 locales components for the pipewire package.
 
 
-%package man
-Summary: man components for the pipewire package.
-Group: Default
-
-%description man
-man components for the pipewire package.
-
-
 %package services
 Summary: services components for the pipewire package.
 Group: Systemd services
@@ -144,10 +134,10 @@ services components for the pipewire package.
 
 
 %prep
-%setup -q -n pipewire-0.3.85
-cd %{_builddir}/pipewire-0.3.85
+%setup -q -n pipewire-1.0.0
+cd %{_builddir}/pipewire-1.0.0
 pushd ..
-cp -a pipewire-0.3.85 buildavx2
+cp -a pipewire-1.0.0 buildavx2
 popd
 
 %build
@@ -155,7 +145,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1700150085
+export SOURCE_DATE_EPOCH=1701097278
 export GCC_IGNORE_WERROR=1
 CLEAR_INTERMEDIATE_CFLAGS="$CLEAR_INTERMEDIATE_CFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
 CLEAR_INTERMEDIATE_FCFLAGS="$CLEAR_INTERMEDIATE_FFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
@@ -592,7 +582,7 @@ ln -s ../pipewire-pulse.socket %{buildroot}/usr/lib/systemd/user/sockets.target.
 /V3/usr/lib64/alsa-lib/libasound_module_ctl_pipewire.so
 /V3/usr/lib64/alsa-lib/libasound_module_pcm_pipewire.so
 /V3/usr/lib64/gstreamer-1.0/libgstpipewire.so
-/V3/usr/lib64/libpipewire-0.3.so.0.385.0
+/V3/usr/lib64/libpipewire-0.3.so.0.1000.0
 /V3/usr/lib64/pipewire-0.3/libpipewire-module-access.so
 /V3/usr/lib64/pipewire-0.3/libpipewire-module-adapter.so
 /V3/usr/lib64/pipewire-0.3/libpipewire-module-avb.so
@@ -653,7 +643,7 @@ ln -s ../pipewire-pulse.socket %{buildroot}/usr/lib/systemd/user/sockets.target.
 /usr/lib64/alsa-lib/libasound_module_pcm_pipewire.so
 /usr/lib64/gstreamer-1.0/libgstpipewire.so
 /usr/lib64/libpipewire-0.3.so.0
-/usr/lib64/libpipewire-0.3.so.0.385.0
+/usr/lib64/libpipewire-0.3.so.0.1000.0
 /usr/lib64/pipewire-0.3/libpipewire-module-access.so
 /usr/lib64/pipewire-0.3/libpipewire-module-adapter.so
 /usr/lib64/pipewire-0.3/libpipewire-module-avb.so
@@ -715,23 +705,6 @@ ln -s ../pipewire-pulse.socket %{buildroot}/usr/lib/systemd/user/sockets.target.
 %defattr(0644,root,root,0755)
 /usr/share/package-licenses/pipewire/13641f6e59f451fcd8b6f92b449b91e4265854a5
 /usr/share/package-licenses/pipewire/b20949a01ecd5fc139d843db8a3e3b66b6ab8623
-
-%files man
-%defattr(0644,root,root,0755)
-/usr/share/man/man1/pipewire-pulse.1
-/usr/share/man/man1/pipewire.1
-/usr/share/man/man1/pw-cat.1
-/usr/share/man/man1/pw-cli.1
-/usr/share/man/man1/pw-config.1
-/usr/share/man/man1/pw-dot.1
-/usr/share/man/man1/pw-jack.1
-/usr/share/man/man1/pw-link.1
-/usr/share/man/man1/pw-metadata.1
-/usr/share/man/man1/pw-mididump.1
-/usr/share/man/man1/pw-mon.1
-/usr/share/man/man1/pw-profiler.1
-/usr/share/man/man1/pw-top.1
-/usr/share/man/man5/pipewire.conf.5
 
 %files services
 %defattr(-,root,root,-)
