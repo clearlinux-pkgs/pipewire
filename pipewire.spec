@@ -6,10 +6,10 @@
 # autospec commit: fae1327
 #
 Name     : pipewire
-Version  : 1.0.2
-Release  : 108
-URL      : https://gitlab.freedesktop.org/pipewire/pipewire/-/archive/1.0.2/pipewire-1.0.2.tar.gz
-Source0  : https://gitlab.freedesktop.org/pipewire/pipewire/-/archive/1.0.2/pipewire-1.0.2.tar.gz
+Version  : 1.0.3
+Release  : 109
+URL      : https://gitlab.freedesktop.org/pipewire/pipewire/-/archive/1.0.3/pipewire-1.0.3.tar.gz
+Source0  : https://gitlab.freedesktop.org/pipewire/pipewire/-/archive/1.0.3/pipewire-1.0.3.tar.gz
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : MIT
@@ -134,10 +134,10 @@ services components for the pipewire package.
 
 
 %prep
-%setup -q -n pipewire-1.0.2
-cd %{_builddir}/pipewire-1.0.2
+%setup -q -n pipewire-1.0.3
+cd %{_builddir}/pipewire-1.0.3
 pushd ..
-cp -a pipewire-1.0.2 buildavx2
+cp -a pipewire-1.0.3 buildavx2
 popd
 
 %build
@@ -145,7 +145,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1706717690
+export SOURCE_DATE_EPOCH=1706890664
 export GCC_IGNORE_WERROR=1
 CLEAR_INTERMEDIATE_CFLAGS="$CLEAR_INTERMEDIATE_CFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
 CLEAR_INTERMEDIATE_FCFLAGS="$CLEAR_INTERMEDIATE_FFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
@@ -582,7 +582,7 @@ ln -s ../pipewire-pulse.socket %{buildroot}/usr/lib/systemd/user/sockets.target.
 /V3/usr/lib64/alsa-lib/libasound_module_ctl_pipewire.so
 /V3/usr/lib64/alsa-lib/libasound_module_pcm_pipewire.so
 /V3/usr/lib64/gstreamer-1.0/libgstpipewire.so
-/V3/usr/lib64/libpipewire-0.3.so.0.1002.0
+/V3/usr/lib64/libpipewire-0.3.so.0.1003.0
 /V3/usr/lib64/pipewire-0.3/libpipewire-module-access.so
 /V3/usr/lib64/pipewire-0.3/libpipewire-module-adapter.so
 /V3/usr/lib64/pipewire-0.3/libpipewire-module-avb.so
@@ -643,7 +643,7 @@ ln -s ../pipewire-pulse.socket %{buildroot}/usr/lib/systemd/user/sockets.target.
 /usr/lib64/alsa-lib/libasound_module_pcm_pipewire.so
 /usr/lib64/gstreamer-1.0/libgstpipewire.so
 /usr/lib64/libpipewire-0.3.so.0
-/usr/lib64/libpipewire-0.3.so.0.1002.0
+/usr/lib64/libpipewire-0.3.so.0.1003.0
 /usr/lib64/pipewire-0.3/libpipewire-module-access.so
 /usr/lib64/pipewire-0.3/libpipewire-module-adapter.so
 /usr/lib64/pipewire-0.3/libpipewire-module-avb.so
