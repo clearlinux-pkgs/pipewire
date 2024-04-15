@@ -1,0 +1,6 @@
+/builddir/build/BUILDROOT/pipewire-1.0.5-111.x86_64/etc/:
+/builddir/build/BUILDROOT/pipewire-1.0.5-111.x86_64/etc/security/limits.d:
+/builddir/build/BUILDROOT/pipewire-1.0.5-111.x86_64/etc/security:
+25-pw-rlimits.conf
+limits.d
+security
