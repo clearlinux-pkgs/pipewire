@@ -13,6 +13,8 @@ libpipewire-0.3.so.0:pw_conf_save_state
 libpipewire-0.3.so.0:pw_conf_section_for_each
 libpipewire-0.3.so.0:pw_conf_section_match_rules
 libpipewire-0.3.so.0:pw_conf_section_update_props
+libpipewire-0.3.so.0:pw_conf_section_update_props_rules
+libpipewire-0.3.so.0:pw_context_acquire_loop
 libpipewire-0.3.so.0:pw_context_add_listener
 libpipewire-0.3.so.0:pw_context_add_spa_lib
 libpipewire-0.3.so.0:pw_context_conf_section_for_each
@@ -51,6 +53,7 @@ libpipewire-0.3.so.0:pw_context_load_spa_handle
 libpipewire-0.3.so.0:pw_context_new
 libpipewire-0.3.so.0:pw_context_parse_conf_section
 libpipewire-0.3.so.0:pw_context_register_export_type
+libpipewire-0.3.so.0:pw_context_release_loop
 libpipewire-0.3.so.0:pw_context_set_object
 libpipewire-0.3.so.0:pw_context_update_properties
 libpipewire-0.3.so.0:pw_control_add_link
@@ -74,7 +77,9 @@ libpipewire-0.3.so.0:pw_core_update_properties
 libpipewire-0.3.so.0:pw_data_loop_add_listener
 libpipewire-0.3.so.0:pw_data_loop_destroy
 libpipewire-0.3.so.0:pw_data_loop_exit
+libpipewire-0.3.so.0:pw_data_loop_get_class
 libpipewire-0.3.so.0:pw_data_loop_get_loop
+libpipewire-0.3.so.0:pw_data_loop_get_name
 libpipewire-0.3.so.0:pw_data_loop_get_thread
 libpipewire-0.3.so.0:pw_data_loop_in_thread
 libpipewire-0.3.so.0:pw_data_loop_invoke
@@ -101,6 +106,7 @@ libpipewire-0.3.so.0:pw_filter_destroy
 libpipewire-0.3.so.0:pw_filter_disconnect
 libpipewire-0.3.so.0:pw_filter_flush
 libpipewire-0.3.so.0:pw_filter_get_core
+libpipewire-0.3.so.0:pw_filter_get_data_loop
 libpipewire-0.3.so.0:pw_filter_get_dsp_buffer
 libpipewire-0.3.so.0:pw_filter_get_name
 libpipewire-0.3.so.0:pw_filter_get_node_id
@@ -181,6 +187,7 @@ libpipewire-0.3.so.0:pw_impl_device_get_properties
 libpipewire-0.3.so.0:pw_impl_device_get_user_data
 libpipewire-0.3.so.0:pw_impl_device_register
 libpipewire-0.3.so.0:pw_impl_device_set_implementation
+libpipewire-0.3.so.0:pw_impl_device_set_param
 libpipewire-0.3.so.0:pw_impl_device_update_properties
 libpipewire-0.3.so.0:pw_impl_factory_add_listener
 libpipewire-0.3.so.0:pw_impl_factory_create_object
@@ -221,6 +228,7 @@ libpipewire-0.3.so.0:pw_impl_module_schedule_destroy
 libpipewire-0.3.so.0:pw_impl_module_update_properties
 libpipewire-0.3.so.0:pw_impl_node_add_listener
 libpipewire-0.3.so.0:pw_impl_node_add_rt_listener
+libpipewire-0.3.so.0:pw_impl_node_add_target
 libpipewire-0.3.so.0:pw_impl_node_destroy
 libpipewire-0.3.so.0:pw_impl_node_find_port
 libpipewire-0.3.so.0:pw_impl_node_for_each_param
@@ -236,10 +244,12 @@ libpipewire-0.3.so.0:pw_impl_node_initialized
 libpipewire-0.3.so.0:pw_impl_node_is_active
 libpipewire-0.3.so.0:pw_impl_node_register
 libpipewire-0.3.so.0:pw_impl_node_remove_rt_listener
+libpipewire-0.3.so.0:pw_impl_node_remove_target
 libpipewire-0.3.so.0:pw_impl_node_send_command
 libpipewire-0.3.so.0:pw_impl_node_set_active
 libpipewire-0.3.so.0:pw_impl_node_set_driver
 libpipewire-0.3.so.0:pw_impl_node_set_implementation
+libpipewire-0.3.so.0:pw_impl_node_set_io
 libpipewire-0.3.so.0:pw_impl_node_set_param
 libpipewire-0.3.so.0:pw_impl_node_set_state
 libpipewire-0.3.so.0:pw_impl_node_update_properties
@@ -271,9 +281,13 @@ libpipewire-0.3.so.0:pw_log_logtv
 libpipewire-0.3.so.0:pw_log_logv
 libpipewire-0.3.so.0:pw_log_set
 libpipewire-0.3.so.0:pw_log_set_level
+libpipewire-0.3.so.0:pw_log_set_level_string
+libpipewire-0.3.so.0:pw_log_topic_register
+libpipewire-0.3.so.0:pw_log_topic_unregister
 libpipewire-0.3.so.0:pw_loop_check
 libpipewire-0.3.so.0:pw_loop_destroy
 libpipewire-0.3.so.0:pw_loop_new
+libpipewire-0.3.so.0:pw_loop_set_name
 libpipewire-0.3.so.0:pw_main_loop_add_listener
 libpipewire-0.3.so.0:pw_main_loop_destroy
 libpipewire-0.3.so.0:pw_main_loop_get_loop
@@ -304,6 +318,8 @@ libpipewire-0.3.so.0:pw_ngettext
 libpipewire-0.3.so.0:pw_node_info_free
 libpipewire-0.3.so.0:pw_node_info_merge
 libpipewire-0.3.so.0:pw_node_info_update
+libpipewire-0.3.so.0:pw_node_peer_ref
+libpipewire-0.3.so.0:pw_node_peer_unref
 libpipewire-0.3.so.0:pw_node_state_as_string
 libpipewire-0.3.so.0:pw_port_info_free
 libpipewire-0.3.so.0:pw_port_info_merge
@@ -323,6 +339,7 @@ libpipewire-0.3.so.0:pw_properties_iterate
 libpipewire-0.3.so.0:pw_properties_new
 libpipewire-0.3.so.0:pw_properties_new_dict
 libpipewire-0.3.so.0:pw_properties_new_string
+libpipewire-0.3.so.0:pw_properties_new_string_checked
 libpipewire-0.3.so.0:pw_properties_serialize_dict
 libpipewire-0.3.so.0:pw_properties_set
 libpipewire-0.3.so.0:pw_properties_setf
@@ -331,6 +348,7 @@ libpipewire-0.3.so.0:pw_properties_update
 libpipewire-0.3.so.0:pw_properties_update_ignore
 libpipewire-0.3.so.0:pw_properties_update_keys
 libpipewire-0.3.so.0:pw_properties_update_string
+libpipewire-0.3.so.0:pw_properties_update_string_checked
 libpipewire-0.3.so.0:pw_protocol_add_listener
 libpipewire-0.3.so.0:pw_protocol_add_marshal
 libpipewire-0.3.so.0:pw_protocol_destroy
@@ -394,6 +412,7 @@ libpipewire-0.3.so.0:pw_stream_disconnect
 libpipewire-0.3.so.0:pw_stream_flush
 libpipewire-0.3.so.0:pw_stream_get_control
 libpipewire-0.3.so.0:pw_stream_get_core
+libpipewire-0.3.so.0:pw_stream_get_data_loop
 libpipewire-0.3.so.0:pw_stream_get_name
 libpipewire-0.3.so.0:pw_stream_get_node_id
 libpipewire-0.3.so.0:pw_stream_get_nsec

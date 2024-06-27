@@ -15,3 +15,6 @@ libffado
 lc3
 webrtc-audio-processing-1
 libselinux
+libapparmor
+snapd-glib
+snapd-glib-2
