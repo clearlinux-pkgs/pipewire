@@ -16,8 +16,10 @@ libgstreamer-1.0.so.0
 libgstvideo-1.0.so.0
 libjack.so.0
 libm.so.6
+libncursesw.so.6
 libopus.so.0
 libpulse.so.0
+libreadline.so.8
 libsbc.so.1
 libsndfile.so.1
 libsystemd.so.0
