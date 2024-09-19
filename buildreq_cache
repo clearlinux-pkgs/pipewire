@@ -1,4 +1,4 @@
-1.2.3
+1.2.4
 libcap-dev
 libusb-dev
 openssl-dev
@@ -6,6 +6,5 @@ pkgconfig(libcanberra)
 pkgconfig(libcap)
 pkgconfig(libusb-1.0)
 pkgconfig(readline)
-pypi(packaging)
 readline-dev
 valgrind
