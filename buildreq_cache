@@ -1,9 +1,11 @@
-1.2.7
+1.3.83
 libcap-dev
 libusb-dev
 openssl-dev
+pkgconfig(fftw3f)
 pkgconfig(libcanberra)
 pkgconfig(libcap)
+pkgconfig(libebur128)
 pkgconfig(libusb-1.0)
 pkgconfig(readline)
 readline-dev

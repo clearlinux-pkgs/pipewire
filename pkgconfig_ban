@@ -18,3 +18,4 @@ libselinux
 libapparmor
 snapd-glib
 snapd-glib-2
+webrtc-audio-processing-2
